@@ -14,7 +14,13 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.10.1'
 }
 
-java { sourceCompatibility = JavaVersion.VERSION_17 }
+configurations.configureEach {
+    resolutionStrategy.capabilitiesResolution.withCapability('org.spigotmc:spigot-api') {
+        select('io.papermc.paper:paper-api:1.21.8-R0.1-SNAPSHOT')
+    }
+}
+
+java { sourceCompatibility = JavaVersion.VERSION_21 }
 
 jar {
     archiveFileName = 'GoAPI.jar'
