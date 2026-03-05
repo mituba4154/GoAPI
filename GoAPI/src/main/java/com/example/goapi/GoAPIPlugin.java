@@ -72,7 +72,23 @@ public class GoAPIPlugin extends JavaPlugin implements GoAPI {
 
     @Override
     public boolean isAlive() {
-        return client != null;
+        if (client == null) {
+            return false;
+        }
+        try {
+            java.net.http.HttpClient hc = java.net.http.HttpClient.newBuilder()
+                .connectTimeout(java.time.Duration.ofMillis(500))
+                .build();
+            java.net.http.HttpRequest req = java.net.http.HttpRequest.newBuilder()
+                .uri(java.net.URI.create(getConfig().getString("go-server-url", "http://localhost:8765") + "/health"))
+                .timeout(java.time.Duration.ofMillis(500))
+                .GET()
+                .build();
+            int status = hc.send(req, java.net.http.HttpResponse.BodyHandlers.discarding()).statusCode();
+            return status == 200;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     @Override

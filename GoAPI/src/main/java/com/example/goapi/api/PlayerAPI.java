@@ -14,8 +14,8 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
 public final class PlayerAPI {
@@ -30,6 +30,16 @@ public final class PlayerAPI {
             }
             Map<String, Object> result = new HashMap<>();
             result.put("result", player.getName());
+            return result;
+        }));
+
+        server.register("api.player.getUUID", params -> runOnMain(plugin, () -> {
+            Player player = getPlayer(params);
+            if (player == null) {
+                return offline();
+            }
+            Map<String, Object> result = new HashMap<>();
+            result.put("result", player.getUniqueId().toString());
             return result;
         }));
 
@@ -153,12 +163,12 @@ public final class PlayerAPI {
                     future.complete(error(e.getMessage()));
                 }
             });
-            return future.get();
+            return future.get(2, TimeUnit.SECONDS);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             return error(e.getMessage());
-        } catch (ExecutionException e) {
-            return error(e.getMessage());
+        } catch (java.util.concurrent.TimeoutException e) {
+            return error("main thread timeout");
         } catch (Exception e) {
             return error(e.getMessage());
         }

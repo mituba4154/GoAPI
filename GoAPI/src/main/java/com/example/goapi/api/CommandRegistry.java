@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
 public final class CommandRegistry {
@@ -87,12 +87,12 @@ public final class CommandRegistry {
                     future.complete(error(e.getMessage()));
                 }
             });
-            return future.get();
+            return future.get(2, TimeUnit.SECONDS);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             return error(e.getMessage());
-        } catch (ExecutionException e) {
-            return error(e.getMessage());
+        } catch (java.util.concurrent.TimeoutException e) {
+            return error("main thread timeout");
         } catch (Exception e) {
             return error(e.getMessage());
         }
