@@ -1,0 +1,4291 @@
+package com.example.goapi.bridge;
+
+import com.example.goapi.GoAPIPlugin;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+// Bukkit/Spigot common events
+import org.bukkit.event.entity.AreaEffectCloudApplyEvent;
+import org.bukkit.event.entity.ArrowBodyCountChangeEvent;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.AsyncPlayerChatPreviewEvent;
+import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
+import org.bukkit.event.world.AsyncStructureGenerateEvent;
+import org.bukkit.event.world.AsyncStructureSpawnEvent;
+import org.bukkit.event.entity.BatToggleSleepEvent;
+import org.bukkit.event.block.BellResonateEvent;
+import org.bukkit.event.block.BellRingEvent;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockBrushEvent;
+import org.bukkit.event.block.BlockBurnEvent;
+import org.bukkit.event.block.BlockCanBuildEvent;
+import org.bukkit.event.block.BlockCookEvent;
+import org.bukkit.event.block.BlockDamageAbortEvent;
+import org.bukkit.event.block.BlockDamageEvent;
+import org.bukkit.event.block.BlockDispenseArmorEvent;
+import org.bukkit.event.block.BlockDispenseEvent;
+import org.bukkit.event.block.BlockDispenseLootEvent;
+import org.bukkit.event.block.BlockDropItemEvent;
+import org.bukkit.event.block.BlockEvent;
+import org.bukkit.event.block.BlockExpEvent;
+import org.bukkit.event.block.BlockExplodeEvent;
+import org.bukkit.event.block.BlockFadeEvent;
+import org.bukkit.event.block.BlockFertilizeEvent;
+import org.bukkit.event.block.BlockFormEvent;
+import org.bukkit.event.block.BlockFromToEvent;
+import org.bukkit.event.block.BlockGrowEvent;
+import org.bukkit.event.block.BlockIgniteEvent;
+import org.bukkit.event.block.BlockMultiPlaceEvent;
+import org.bukkit.event.block.BlockPhysicsEvent;
+import org.bukkit.event.block.BlockPistonEvent;
+import org.bukkit.event.block.BlockPistonExtendEvent;
+import org.bukkit.event.block.BlockPistonRetractEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.block.BlockReceiveGameEvent;
+import org.bukkit.event.block.BlockRedstoneEvent;
+import org.bukkit.event.block.BlockShearEntityEvent;
+import org.bukkit.event.block.BlockSpreadEvent;
+import org.bukkit.event.inventory.BrewEvent;
+import org.bukkit.event.inventory.BrewingStandFuelEvent;
+import org.bukkit.event.block.BrewingStartEvent;
+import org.bukkit.event.server.BroadcastMessageEvent;
+import org.bukkit.event.block.CampfireStartEvent;
+import org.bukkit.event.block.CauldronLevelChangeEvent;
+import org.bukkit.event.world.ChunkEvent;
+import org.bukkit.event.world.ChunkLoadEvent;
+import org.bukkit.event.world.ChunkPopulateEvent;
+import org.bukkit.event.world.ChunkUnloadEvent;
+import org.bukkit.event.block.CrafterCraftEvent;
+import org.bukkit.event.inventory.CraftItemEvent;
+import org.bukkit.event.entity.CreatureSpawnEvent;
+import org.bukkit.event.entity.CreeperPowerEvent;
+import org.bukkit.event.enchantment.EnchantItemEvent;
+import org.bukkit.event.entity.EnderDragonChangePhaseEvent;
+import org.bukkit.event.world.EntitiesLoadEvent;
+import org.bukkit.event.world.EntitiesUnloadEvent;
+import org.bukkit.event.entity.EntityAirChangeEvent;
+import org.bukkit.event.block.EntityBlockFormEvent;
+import org.bukkit.event.entity.EntityBreakDoorEvent;
+import org.bukkit.event.entity.EntityBreedEvent;
+import org.bukkit.event.entity.EntityChangeBlockEvent;
+import org.bukkit.event.entity.EntityCombustByBlockEvent;
+import org.bukkit.event.entity.EntityCombustByEntityEvent;
+import org.bukkit.event.entity.EntityCombustEvent;
+import org.bukkit.event.entity.EntityCreatePortalEvent;
+import org.bukkit.event.world.PortalCreateEvent;
+import org.bukkit.event.entity.EntityDamageByBlockEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.entity.EntityDismountEvent;
+import org.bukkit.event.entity.EntityDropItemEvent;
+import org.bukkit.event.entity.EntityEnterBlockEvent;
+import org.bukkit.event.entity.EntityEnterLoveModeEvent;
+import org.bukkit.event.entity.EntityEvent;
+import org.bukkit.event.entity.EntityExhaustionEvent;
+import org.bukkit.event.entity.EntityExplodeEvent;
+import org.bukkit.event.entity.EntityInteractEvent;
+import org.bukkit.event.entity.EntityKnockbackByEntityEvent;
+import org.bukkit.event.entity.EntityKnockbackEvent;
+import org.bukkit.event.entity.EntityMountEvent;
+import org.bukkit.event.entity.EntityPickupItemEvent;
+import org.bukkit.event.entity.EntityPlaceEvent;
+import org.bukkit.event.entity.EntityPortalEnterEvent;
+import org.bukkit.event.entity.EntityPortalEvent;
+import org.bukkit.event.entity.EntityPortalExitEvent;
+import org.bukkit.event.entity.EntityPoseChangeEvent;
+import org.bukkit.event.entity.EntityPotionEffectEvent;
+import org.bukkit.event.entity.EntityRegainHealthEvent;
+import org.bukkit.event.entity.EntityRemoveEvent;
+import org.bukkit.event.entity.EntityResurrectEvent;
+import org.bukkit.event.entity.EntityShootBowEvent;
+import org.bukkit.event.entity.EntitySpawnEvent;
+import org.bukkit.event.entity.EntitySpellCastEvent;
+import org.bukkit.event.entity.EntityTameEvent;
+import org.bukkit.event.entity.EntityTargetBlockEvent;
+import org.bukkit.event.entity.EntityTargetEvent;
+import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
+import org.bukkit.event.entity.EntityTeleportEvent;
+import org.bukkit.event.entity.EntityToggleGlideEvent;
+import org.bukkit.event.entity.EntityToggleSwimEvent;
+import org.bukkit.event.entity.EntityTransformEvent;
+import org.bukkit.event.entity.EntityUnleashEvent;
+import org.bukkit.event.Event;
+import org.bukkit.event.entity.ExpBottleEvent;
+import org.bukkit.event.entity.ExplosionPrimeEvent;
+import org.bukkit.event.entity.FireworkExplodeEvent;
+import org.bukkit.event.block.FluidLevelChangeEvent;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
+import org.bukkit.event.inventory.FurnaceBurnEvent;
+import org.bukkit.event.inventory.FurnaceExtractEvent;
+import org.bukkit.event.inventory.FurnaceSmeltEvent;
+import org.bukkit.event.inventory.FurnaceStartSmeltEvent;
+import org.bukkit.event.world.GenericGameEvent;
+import org.bukkit.event.hanging.HangingBreakByEntityEvent;
+import org.bukkit.event.hanging.HangingBreakEvent;
+import org.bukkit.event.hanging.HangingEvent;
+import org.bukkit.event.hanging.HangingPlaceEvent;
+import org.bukkit.event.inventory.HopperInventorySearchEvent;
+import org.bukkit.event.entity.HorseJumpEvent;
+import org.bukkit.event.block.InventoryBlockStartEvent;
+import org.bukkit.event.inventory.FurnaceStartSmeltEvent;
+import org.bukkit.event.block.BrewingStartEvent;
+import org.bukkit.event.block.CampfireStartEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryCreativeEvent;
+import org.bukkit.event.inventory.InventoryDragEvent;
+import org.bukkit.event.inventory.InventoryEvent;
+import org.bukkit.event.inventory.InventoryInteractEvent;
+import org.bukkit.event.inventory.InventoryMoveItemEvent;
+import org.bukkit.event.inventory.InventoryOpenEvent;
+import org.bukkit.event.inventory.InventoryPickupItemEvent;
+import org.bukkit.event.entity.ItemDespawnEvent;
+import org.bukkit.event.entity.ItemMergeEvent;
+import org.bukkit.event.entity.ItemSpawnEvent;
+import org.bukkit.event.block.LeavesDecayEvent;
+import org.bukkit.event.weather.LightningStrikeEvent;
+import org.bukkit.event.entity.LingeringPotionSplashEvent;
+import org.bukkit.event.world.LootGenerateEvent;
+import org.bukkit.event.server.MapInitializeEvent;
+import org.bukkit.event.block.MoistureChangeEvent;
+import org.bukkit.event.block.NotePlayEvent;
+import org.bukkit.event.entity.PiglinBarterEvent;
+import org.bukkit.event.entity.PigZapEvent;
+import org.bukkit.event.entity.PigZombieAngerEvent;
+import org.bukkit.event.player.PlayerAdvancementDoneEvent;
+import org.bukkit.event.player.PlayerAnimationEvent;
+import org.bukkit.event.player.PlayerArmorStandManipulateEvent;
+import org.bukkit.event.player.PlayerBedEnterEvent;
+import org.bukkit.event.player.PlayerBedLeaveEvent;
+import org.bukkit.event.player.PlayerBucketEmptyEvent;
+import org.bukkit.event.player.PlayerBucketEntityEvent;
+import org.bukkit.event.player.PlayerBucketEvent;
+import org.bukkit.event.player.PlayerBucketFillEvent;
+import org.bukkit.event.player.PlayerBucketFishEvent;
+import org.bukkit.event.player.PlayerBucketEntityEvent;
+import org.bukkit.event.player.PlayerChangedMainHandEvent;
+import org.bukkit.event.player.PlayerChangedWorldEvent;
+import org.bukkit.event.player.PlayerChannelEvent;
+import org.bukkit.event.player.PlayerChatEvent;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerChatTabCompleteEvent;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
+import org.bukkit.event.player.PlayerCommandSendEvent;
+import org.bukkit.event.player.PlayerCustomClickEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerEditBookEvent;
+import org.bukkit.event.player.PlayerEggThrowEvent;
+import org.bukkit.event.player.PlayerEvent;
+import org.bukkit.event.player.PlayerExpChangeEvent;
+import org.bukkit.event.player.PlayerExpCooldownChangeEvent;
+import org.bukkit.event.player.PlayerFishEvent;
+import org.bukkit.event.player.PlayerGameModeChangeEvent;
+import org.bukkit.event.player.PlayerHarvestBlockEvent;
+import org.bukkit.event.player.PlayerHideEntityEvent;
+import org.bukkit.event.player.PlayerInputEvent;
+import org.bukkit.event.player.PlayerInteractAtEntityEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerItemBreakEvent;
+import org.bukkit.event.player.PlayerItemConsumeEvent;
+import org.bukkit.event.player.PlayerItemDamageEvent;
+import org.bukkit.event.player.PlayerItemHeldEvent;
+import org.bukkit.event.player.PlayerItemMendEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerKickEvent;
+import org.bukkit.event.entity.PlayerLeashEntityEvent;
+import org.bukkit.event.player.PlayerLevelChangeEvent;
+import org.bukkit.event.player.PlayerLinksSendEvent;
+import org.bukkit.event.player.PlayerLocaleChangeEvent;
+import org.bukkit.event.player.PlayerLoginEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerPickupArrowEvent;
+import org.bukkit.event.player.PlayerPickupItemEvent;
+import org.bukkit.event.entity.EntityPickupItemEvent;
+import org.bukkit.event.player.PlayerPortalEvent;
+import org.bukkit.event.player.PlayerPreLoginEvent;
+import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.PlayerRecipeBookClickEvent;
+import org.bukkit.event.player.PlayerRecipeBookSettingsChangeEvent;
+import org.bukkit.event.player.PlayerRecipeDiscoverEvent;
+import org.bukkit.event.player.PlayerRegisterChannelEvent;
+import org.bukkit.event.player.PlayerResourcePackStatusEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.event.player.PlayerRiptideEvent;
+import org.bukkit.event.player.PlayerShearEntityEvent;
+import org.bukkit.event.player.PlayerShowEntityEvent;
+import org.bukkit.event.player.PlayerSignOpenEvent;
+import org.bukkit.event.player.PlayerSpawnChangeEvent;
+import org.bukkit.event.player.PlayerStatisticIncrementEvent;
+import org.bukkit.event.player.PlayerSwapHandItemsEvent;
+import org.bukkit.event.player.PlayerTakeLecternBookEvent;
+import org.bukkit.event.player.PlayerTeleportEvent;
+import org.bukkit.event.player.PlayerToggleFlightEvent;
+import org.bukkit.event.player.PlayerToggleSneakEvent;
+import org.bukkit.event.player.PlayerToggleSprintEvent;
+import org.bukkit.event.player.PlayerUnleashEntityEvent;
+import org.bukkit.event.player.PlayerUnregisterChannelEvent;
+import org.bukkit.event.player.PlayerVelocityEvent;
+import org.bukkit.event.server.PluginDisableEvent;
+import org.bukkit.event.server.PluginEnableEvent;
+import org.bukkit.event.server.PluginEvent;
+import org.bukkit.event.world.PortalCreateEvent;
+import org.bukkit.event.entity.PotionSplashEvent;
+import org.bukkit.event.inventory.PrepareAnvilEvent;
+import org.bukkit.event.inventory.PrepareGrindstoneEvent;
+import org.bukkit.event.inventory.PrepareInventoryResultEvent;
+import org.bukkit.event.inventory.PrepareItemCraftEvent;
+import org.bukkit.event.enchantment.PrepareItemEnchantEvent;
+import org.bukkit.event.inventory.PrepareSmithingEvent;
+import org.bukkit.event.entity.ProjectileHitEvent;
+import org.bukkit.event.entity.ProjectileLaunchEvent;
+import org.bukkit.event.raid.RaidEvent;
+import org.bukkit.event.raid.RaidFinishEvent;
+import org.bukkit.event.raid.RaidSpawnWaveEvent;
+import org.bukkit.event.raid.RaidStopEvent;
+import org.bukkit.event.raid.RaidTriggerEvent;
+import org.bukkit.event.server.RemoteServerCommandEvent;
+import org.bukkit.event.block.SculkBloomEvent;
+import org.bukkit.event.server.ServerCommandEvent;
+import org.bukkit.event.server.ServerEvent;
+import org.bukkit.event.server.ServerListPingEvent;
+import org.bukkit.event.server.ServerLoadEvent;
+import org.bukkit.event.server.ServiceEvent;
+import org.bukkit.event.server.ServiceRegisterEvent;
+import org.bukkit.event.server.ServiceUnregisterEvent;
+import org.bukkit.event.entity.SheepDyeWoolEvent;
+import org.bukkit.event.entity.SheepRegrowWoolEvent;
+import org.bukkit.event.block.SignChangeEvent;
+import org.bukkit.event.entity.SlimeSplitEvent;
+import org.bukkit.event.inventory.SmithItemEvent;
+import org.bukkit.event.world.SpawnChangeEvent;
+import org.bukkit.event.entity.SpawnerSpawnEvent;
+import org.bukkit.event.block.SpongeAbsorbEvent;
+import org.bukkit.event.entity.StriderTemperatureChangeEvent;
+import org.bukkit.event.world.StructureGrowEvent;
+import org.bukkit.event.server.TabCompleteEvent;
+import org.bukkit.event.weather.ThunderChangeEvent;
+import org.bukkit.event.world.TimeSkipEvent;
+import org.bukkit.event.block.TNTPrimeEvent;
+import org.bukkit.event.inventory.TradeSelectEvent;
+import org.bukkit.event.entity.TrialSpawnerSpawnEvent;
+import org.bukkit.event.block.VaultDisplayItemEvent;
+import org.bukkit.event.vehicle.VehicleBlockCollisionEvent;
+import org.bukkit.event.vehicle.VehicleCollisionEvent;
+import org.bukkit.event.vehicle.VehicleCreateEvent;
+import org.bukkit.event.vehicle.VehicleDamageEvent;
+import org.bukkit.event.vehicle.VehicleDestroyEvent;
+import org.bukkit.event.vehicle.VehicleEnterEvent;
+import org.bukkit.event.vehicle.VehicleEntityCollisionEvent;
+import org.bukkit.event.vehicle.VehicleEvent;
+import org.bukkit.event.vehicle.VehicleExitEvent;
+import org.bukkit.event.vehicle.VehicleMoveEvent;
+import org.bukkit.event.vehicle.VehicleUpdateEvent;
+import org.bukkit.event.entity.VillagerAcquireTradeEvent;
+import org.bukkit.event.entity.VillagerCareerChangeEvent;
+import org.bukkit.event.entity.VillagerReplenishTradeEvent;
+import org.bukkit.event.entity.VillagerReputationChangeEvent;
+import org.bukkit.event.weather.WeatherChangeEvent;
+import org.bukkit.event.weather.WeatherEvent;
+import org.bukkit.event.world.WorldEvent;
+import org.bukkit.event.world.WorldInitEvent;
+import org.bukkit.event.world.WorldLoadEvent;
+import org.bukkit.event.world.WorldSaveEvent;
+import org.bukkit.event.world.WorldUnloadEvent;
+// Paper-only events
+import com.destroystokyo.paper.event.block.AnvilDamagedEvent;
+import io.papermc.paper.event.player.AsyncChatCommandDecorateEvent;
+import io.papermc.paper.event.player.AsyncChatDecorateEvent;
+import io.papermc.paper.event.player.AsyncChatEvent;
+import io.papermc.paper.event.player.AsyncChatEvent;
+import io.papermc.paper.event.connection.configuration.AsyncPlayerConnectionConfigureEvent;
+import com.destroystokyo.paper.event.brigadier.AsyncPlayerSendCommandsEvent;
+import com.destroystokyo.paper.event.brigadier.AsyncPlayerSendSuggestionsEvent;
+import com.destroystokyo.paper.event.server.AsyncTabCompleteEvent;
+import io.papermc.paper.event.block.BeaconActivatedEvent;
+import io.papermc.paper.event.block.BeaconDeactivatedEvent;
+import com.destroystokyo.paper.event.block.BeaconEffectEvent;
+import io.papermc.paper.event.block.BellRevealRaiderEvent;
+import io.papermc.paper.event.block.BlockBreakBlockEvent;
+import io.papermc.paper.event.block.BlockBreakProgressUpdateEvent;
+import com.destroystokyo.paper.event.block.BlockDestroyEvent;
+import io.papermc.paper.event.block.BlockFailedDispenseEvent;
+import io.papermc.paper.event.block.BlockLockCheckEvent;
+import io.papermc.paper.event.block.BlockPreDispenseEvent;
+import io.papermc.paper.event.player.CartographyItemEvent;
+import io.papermc.paper.event.player.ChatEvent;
+import io.papermc.paper.event.packet.ClientTickEndEvent;
+import com.destroystokyo.paper.event.brigadier.CommandRegisteredEvent;
+import io.papermc.paper.event.block.CompostItemEvent;
+import com.destroystokyo.paper.event.entity.CreeperIgniteEvent;
+import io.papermc.paper.event.block.DragonEggFormEvent;
+import io.papermc.paper.event.entity.ElderGuardianAppearanceEvent;
+import com.destroystokyo.paper.event.entity.EnderDragonFireballHitEvent;
+import com.destroystokyo.paper.event.entity.EnderDragonFlameEvent;
+import com.destroystokyo.paper.event.entity.EnderDragonShootFireballEvent;
+import com.destroystokyo.paper.event.entity.EndermanAttackPlayerEvent;
+import com.destroystokyo.paper.event.entity.EndermanEscapeEvent;
+import com.destroystokyo.paper.event.entity.EntityAddToWorldEvent;
+import io.papermc.paper.event.entity.EntityAttemptSmashAttackEvent;
+import io.papermc.paper.event.entity.EntityAttemptSpinAttackEvent;
+import io.papermc.paper.event.entity.EntityCompostItemEvent;
+import io.papermc.paper.event.entity.EntityDamageItemEvent;
+import io.papermc.paper.event.entity.EntityDyeEvent;
+import io.papermc.paper.event.entity.EntityEffectTickEvent;
+import io.papermc.paper.event.entity.EntityEquipmentChangedEvent;
+import io.papermc.paper.event.entity.EntityFertilizeEggEvent;
+import io.papermc.paper.event.entity.EntityInsideBlockEvent;
+import com.destroystokyo.paper.event.entity.EntityJumpEvent;
+import io.papermc.paper.event.entity.EntityLoadCrossbowEvent;
+import io.papermc.paper.event.entity.EntityMoveEvent;
+import com.destroystokyo.paper.event.entity.EntityPathfindEvent;
+import io.papermc.paper.event.entity.EntityPortalReadyEvent;
+import io.papermc.paper.event.entity.EntityPushedByEntityAttackEvent;
+import com.destroystokyo.paper.event.entity.EntityRemoveFromWorldEvent;
+import com.destroystokyo.paper.event.entity.EntityTeleportEndGatewayEvent;
+import io.papermc.paper.event.entity.EntityToggleSitEvent;
+import com.destroystokyo.paper.event.entity.EntityZapEvent;
+import com.destroystokyo.paper.event.entity.ExperienceOrbMergeEvent;
+import com.destroystokyo.paper.event.profile.FillProfileEvent;
+import io.papermc.paper.event.entity.FishHookStateChangeEvent;
+import com.destroystokyo.paper.event.server.GS4QueryEvent;
+import com.destroystokyo.paper.event.player.IllegalPacketEvent;
+import com.destroystokyo.paper.event.profile.LookupProfileEvent;
+import com.destroystokyo.paper.event.server.PaperServerListPingEvent;
+import com.destroystokyo.paper.event.entity.PhantomPreSpawnEvent;
+import com.destroystokyo.paper.event.player.PlayerAdvancementCriterionGrantEvent;
+import io.papermc.paper.event.player.PlayerArmSwingEvent;
+import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent;
+import io.papermc.paper.event.player.PlayerArmSwingEvent;
+import com.destroystokyo.paper.event.player.PlayerAttackEntityCooldownResetEvent;
+import org.bukkit.event.player.PlayerAttemptPickupItemEvent;
+import io.papermc.paper.event.player.PlayerBedFailEnterEvent;
+import io.papermc.paper.event.player.PlayerChangeBeaconEffectEvent;
+import io.papermc.paper.event.packet.PlayerChunkLoadEvent;
+import io.papermc.paper.event.packet.PlayerChunkUnloadEvent;
+import io.papermc.paper.event.player.PlayerClientLoadedWorldEvent;
+import com.destroystokyo.paper.event.player.PlayerClientOptionsChangeEvent;
+import com.destroystokyo.paper.event.player.PlayerConnectionCloseEvent;
+import io.papermc.paper.event.connection.configuration.PlayerConnectionInitialConfigureEvent;
+import io.papermc.paper.event.connection.configuration.PlayerConnectionReconfigureEvent;
+import io.papermc.paper.event.connection.PlayerConnectionValidateLoginEvent;
+import io.papermc.paper.event.player.PlayerDeepSleepEvent;
+import com.destroystokyo.paper.event.player.PlayerElytraBoostEvent;
+import io.papermc.paper.event.player.PlayerFailMoveEvent;
+import io.papermc.paper.event.player.PlayerFlowerPotManipulateEvent;
+import com.destroystokyo.paper.event.player.PlayerHandshakeEvent;
+import io.papermc.paper.event.player.PlayerInsertLecternBookEvent;
+import io.papermc.paper.event.player.PlayerInventorySlotChangeEvent;
+import io.papermc.paper.event.player.PlayerItemCooldownEvent;
+import io.papermc.paper.event.player.PlayerItemFrameChangeEvent;
+import io.papermc.paper.event.player.PlayerItemGroupCooldownEvent;
+import com.destroystokyo.paper.event.player.PlayerJumpEvent;
+import com.destroystokyo.paper.event.player.PlayerLaunchProjectileEvent;
+import io.papermc.paper.event.player.PlayerLecternPageChangeEvent;
+import io.papermc.paper.event.connection.PlayerConnectionValidateLoginEvent;
+import io.papermc.paper.event.player.PlayerLoomPatternSelectEvent;
+import io.papermc.paper.event.player.PlayerMapFilledEvent;
+import io.papermc.paper.event.player.PlayerNameEntityEvent;
+import com.destroystokyo.paper.event.entity.PlayerNaturallySpawnCreaturesEvent;
+import io.papermc.paper.event.player.PlayerOpenSignEvent;
+import io.papermc.paper.event.player.PlayerOpenSignEvent;
+import io.papermc.paper.event.player.PlayerPickBlockEvent;
+import io.papermc.paper.event.player.PlayerPickEntityEvent;
+import io.papermc.paper.event.player.PlayerPickItemEvent;
+import io.papermc.paper.event.player.PlayerPickBlockEvent;
+import io.papermc.paper.event.player.PlayerPickEntityEvent;
+import com.destroystokyo.paper.event.player.PlayerPickupExperienceEvent;
+import com.destroystokyo.paper.event.player.PlayerPostRespawnEvent;
+import io.papermc.paper.event.player.PlayerPurchaseEvent;
+import com.destroystokyo.paper.event.player.PlayerReadyArrowEvent;
+import io.papermc.paper.event.player.PlayerServerFullCheckEvent;
+import com.destroystokyo.paper.event.player.PlayerSetSpawnEvent;
+import io.papermc.paper.event.block.PlayerShearBlockEvent;
+import io.papermc.paper.event.player.PlayerShieldDisableEvent;
+import io.papermc.paper.event.player.PlayerSignCommandPreprocessEvent;
+import io.papermc.paper.event.player.PlayerOpenSignEvent;
+import com.destroystokyo.paper.event.player.PlayerSetSpawnEvent;
+import com.destroystokyo.paper.event.player.PlayerStartSpectatingEntityEvent;
+import io.papermc.paper.event.player.PlayerStonecutterRecipeSelectEvent;
+import com.destroystokyo.paper.event.player.PlayerStopSpectatingEntityEvent;
+import io.papermc.paper.event.player.PlayerStopUsingItemEvent;
+import com.destroystokyo.paper.event.player.PlayerTeleportEndGatewayEvent;
+import io.papermc.paper.event.player.PlayerTrackEntityEvent;
+import io.papermc.paper.event.player.PlayerTradeEvent;
+import io.papermc.paper.event.player.PlayerUntrackEntityEvent;
+import com.destroystokyo.paper.event.player.PlayerUseUnknownEntityEvent;
+import com.destroystokyo.paper.event.entity.PreCreatureSpawnEvent;
+import com.destroystokyo.paper.event.profile.PreFillProfileEvent;
+import com.destroystokyo.paper.event.profile.PreLookupProfileEvent;
+import com.destroystokyo.paper.event.inventory.PrepareResultEvent;
+import com.destroystokyo.paper.event.inventory.PrepareResultEvent;
+import io.papermc.paper.event.player.PrePlayerAttackEntityEvent;
+import com.destroystokyo.paper.event.entity.PreSpawnerSpawnEvent;
+import com.destroystokyo.paper.event.profile.ProfileWhitelistVerifyEvent;
+import com.destroystokyo.paper.event.entity.ProjectileCollideEvent;
+import io.papermc.paper.event.entity.PufferFishStateChangeEvent;
+import com.destroystokyo.paper.event.server.ServerExceptionEvent;
+import io.papermc.paper.event.server.ServerResourcesReloadedEvent;
+import com.destroystokyo.paper.event.server.ServerTickEndEvent;
+import com.destroystokyo.paper.event.server.ServerTickStartEvent;
+import io.papermc.paper.event.entity.ShulkerDuplicateEvent;
+import com.destroystokyo.paper.event.entity.SkeletonHorseTrapEvent;
+import com.destroystokyo.paper.event.entity.SlimeChangeDirectionEvent;
+import com.destroystokyo.paper.event.entity.SlimePathfindEvent;
+import com.destroystokyo.paper.event.entity.SlimeSwimEvent;
+import com.destroystokyo.paper.event.entity.SlimeTargetLivingEntityEvent;
+import com.destroystokyo.paper.event.entity.SlimeWanderEvent;
+import io.papermc.paper.event.world.StructuresLocateEvent;
+import io.papermc.paper.event.world.StructuresLocateEvent;
+import io.papermc.paper.event.entity.TameableDeathMessageEvent;
+import io.papermc.paper.event.block.TargetHitEvent;
+import com.destroystokyo.paper.event.entity.ThrownEggHatchEvent;
+import com.destroystokyo.paper.event.entity.TurtleGoHomeEvent;
+import com.destroystokyo.paper.event.entity.TurtleLayEggEvent;
+import com.destroystokyo.paper.event.entity.TurtleStartDiggingEvent;
+import io.papermc.paper.event.packet.UncheckedSignChangeEvent;
+import org.bukkit.event.command.UnknownCommandEvent;
+import io.papermc.paper.event.block.VaultChangeStateEvent;
+import io.papermc.paper.event.entity.WardenAngerChangeEvent;
+import io.papermc.paper.event.entity.WaterBottleSplashEvent;
+import io.papermc.paper.event.server.WhitelistStateUpdateEvent;
+import com.destroystokyo.paper.event.server.WhitelistToggleEvent;
+import com.destroystokyo.paper.event.entity.WitchConsumePotionEvent;
+import com.destroystokyo.paper.event.entity.WitchReadyPotionEvent;
+import com.destroystokyo.paper.event.entity.WitchThrowPotionEvent;
+import io.papermc.paper.event.world.border.WorldBorderBoundsChangeEvent;
+import io.papermc.paper.event.world.border.WorldBorderBoundsChangeFinishEvent;
+import io.papermc.paper.event.world.border.WorldBorderCenterChangeEvent;
+import io.papermc.paper.event.world.border.WorldBorderEvent;
+import io.papermc.paper.event.world.WorldDifficultyChangeEvent;
+import io.papermc.paper.event.world.WorldGameRuleChangeEvent;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+/**
+ * Auto-generated by scrape_goapi.py - DO NOT EDIT
+ * MC compat: 1.20.1+  |  common: 290  paper-only: 166  total: 456
+ */
+public class BridgePlugin implements Listener {
+
+    private final GoAPIPlugin api;
+    public BridgePlugin(GoAPIPlugin api) { this.api = api; }
+
+    // org.bukkit.event.entity.AreaEffectCloudApplyEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onAreaEffectCloudApplyEvent(org.bukkit.event.entity.AreaEffectCloudApplyEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.AreaEffectCloudApplyEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.ArrowBodyCountChangeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onArrowBodyCountChangeEvent(org.bukkit.event.entity.ArrowBodyCountChangeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.ArrowBodyCountChangeEvent", d, e);
+    }
+
+    // org.bukkit.event.player.AsyncPlayerChatEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onAsyncPlayerChatEvent(org.bukkit.event.player.AsyncPlayerChatEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.AsyncPlayerChatEvent", d, e);
+    }
+
+    // org.bukkit.event.player.AsyncPlayerChatPreviewEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onAsyncPlayerChatPreviewEvent(org.bukkit.event.player.AsyncPlayerChatPreviewEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.AsyncPlayerChatPreviewEvent", d, e);
+    }
+
+    // org.bukkit.event.player.AsyncPlayerPreLoginEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onAsyncPlayerPreLoginEvent(org.bukkit.event.player.AsyncPlayerPreLoginEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.AsyncPlayerPreLoginEvent", d, e);
+    }
+
+    // org.bukkit.event.world.AsyncStructureGenerateEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onAsyncStructureGenerateEvent(org.bukkit.event.world.AsyncStructureGenerateEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.AsyncStructureGenerateEvent", d, e);
+    }
+
+    // org.bukkit.event.world.AsyncStructureSpawnEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onAsyncStructureSpawnEvent(org.bukkit.event.world.AsyncStructureSpawnEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.AsyncStructureSpawnEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.BatToggleSleepEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBatToggleSleepEvent(org.bukkit.event.entity.BatToggleSleepEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BatToggleSleepEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BellResonateEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBellResonateEvent(org.bukkit.event.block.BellResonateEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BellResonateEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BellRingEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBellRingEvent(org.bukkit.event.block.BellRingEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BellRingEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockBreakEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockBreakEvent(org.bukkit.event.block.BlockBreakEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockBreakEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockBrushEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockBrushEvent(org.bukkit.event.block.BlockBrushEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockBrushEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockBurnEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockBurnEvent(org.bukkit.event.block.BlockBurnEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockBurnEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockCanBuildEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockCanBuildEvent(org.bukkit.event.block.BlockCanBuildEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockCanBuildEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockCookEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockCookEvent(org.bukkit.event.block.BlockCookEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockCookEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockDamageAbortEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockDamageAbortEvent(org.bukkit.event.block.BlockDamageAbortEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockDamageAbortEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockDamageEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockDamageEvent(org.bukkit.event.block.BlockDamageEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockDamageEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockDispenseArmorEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockDispenseArmorEvent(org.bukkit.event.block.BlockDispenseArmorEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockDispenseArmorEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockDispenseEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockDispenseEvent(org.bukkit.event.block.BlockDispenseEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockDispenseEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockDispenseLootEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockDispenseLootEvent(org.bukkit.event.block.BlockDispenseLootEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockDispenseLootEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockDropItemEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockDropItemEvent(org.bukkit.event.block.BlockDropItemEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockDropItemEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockEvent(org.bukkit.event.block.BlockEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockExpEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockExpEvent(org.bukkit.event.block.BlockExpEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockExpEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockExplodeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockExplodeEvent(org.bukkit.event.block.BlockExplodeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockExplodeEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockFadeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockFadeEvent(org.bukkit.event.block.BlockFadeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockFadeEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockFertilizeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockFertilizeEvent(org.bukkit.event.block.BlockFertilizeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockFertilizeEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockFormEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockFormEvent(org.bukkit.event.block.BlockFormEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockFormEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockFromToEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockFromToEvent(org.bukkit.event.block.BlockFromToEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockFromToEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockGrowEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockGrowEvent(org.bukkit.event.block.BlockGrowEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockGrowEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockIgniteEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockIgniteEvent(org.bukkit.event.block.BlockIgniteEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockIgniteEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockMultiPlaceEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockMultiPlaceEvent(org.bukkit.event.block.BlockMultiPlaceEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockMultiPlaceEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockPhysicsEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockPhysicsEvent(org.bukkit.event.block.BlockPhysicsEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockPhysicsEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockPistonEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockPistonEvent(org.bukkit.event.block.BlockPistonEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockPistonEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockPistonExtendEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockPistonExtendEvent(org.bukkit.event.block.BlockPistonExtendEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockPistonExtendEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockPistonRetractEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockPistonRetractEvent(org.bukkit.event.block.BlockPistonRetractEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockPistonRetractEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockPlaceEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockPlaceEvent(org.bukkit.event.block.BlockPlaceEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockPlaceEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockReceiveGameEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockReceiveGameEvent(org.bukkit.event.block.BlockReceiveGameEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockReceiveGameEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockRedstoneEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockRedstoneEvent(org.bukkit.event.block.BlockRedstoneEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockRedstoneEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockShearEntityEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockShearEntityEvent(org.bukkit.event.block.BlockShearEntityEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockShearEntityEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BlockSpreadEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockSpreadEvent(org.bukkit.event.block.BlockSpreadEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BlockSpreadEvent", d, e);
+    }
+
+    // org.bukkit.event.inventory.BrewEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBrewEvent(org.bukkit.event.inventory.BrewEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BrewEvent", d, e);
+    }
+
+    // org.bukkit.event.inventory.BrewingStandFuelEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBrewingStandFuelEvent(org.bukkit.event.inventory.BrewingStandFuelEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BrewingStandFuelEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BrewingStartEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBrewingStartEvent(org.bukkit.event.block.BrewingStartEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BrewingStartEvent", d, e);
+    }
+
+    // org.bukkit.event.server.BroadcastMessageEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBroadcastMessageEvent(org.bukkit.event.server.BroadcastMessageEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BroadcastMessageEvent", d, e);
+    }
+
+    // org.bukkit.event.block.CampfireStartEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onCampfireStartEvent(org.bukkit.event.block.CampfireStartEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.CampfireStartEvent", d, e);
+    }
+
+    // org.bukkit.event.block.CauldronLevelChangeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onCauldronLevelChangeEvent(org.bukkit.event.block.CauldronLevelChangeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.CauldronLevelChangeEvent", d, e);
+    }
+
+    // org.bukkit.event.world.ChunkEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onChunkEvent(org.bukkit.event.world.ChunkEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.ChunkEvent", d, e);
+    }
+
+    // org.bukkit.event.world.ChunkLoadEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onChunkLoadEvent(org.bukkit.event.world.ChunkLoadEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.ChunkLoadEvent", d, e);
+    }
+
+    // org.bukkit.event.world.ChunkPopulateEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onChunkPopulateEvent(org.bukkit.event.world.ChunkPopulateEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.ChunkPopulateEvent", d, e);
+    }
+
+    // org.bukkit.event.world.ChunkUnloadEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onChunkUnloadEvent(org.bukkit.event.world.ChunkUnloadEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.ChunkUnloadEvent", d, e);
+    }
+
+    // org.bukkit.event.block.CrafterCraftEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onCrafterCraftEvent(org.bukkit.event.block.CrafterCraftEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.CrafterCraftEvent", d, e);
+    }
+
+    // org.bukkit.event.inventory.CraftItemEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onCraftItemEvent(org.bukkit.event.inventory.CraftItemEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.CraftItemEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.CreatureSpawnEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onCreatureSpawnEvent(org.bukkit.event.entity.CreatureSpawnEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.CreatureSpawnEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.CreeperPowerEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onCreeperPowerEvent(org.bukkit.event.entity.CreeperPowerEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.CreeperPowerEvent", d, e);
+    }
+
+    // org.bukkit.event.enchantment.EnchantItemEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEnchantItemEvent(org.bukkit.event.enchantment.EnchantItemEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EnchantItemEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EnderDragonChangePhaseEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEnderDragonChangePhaseEvent(org.bukkit.event.entity.EnderDragonChangePhaseEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EnderDragonChangePhaseEvent", d, e);
+    }
+
+    // org.bukkit.event.world.EntitiesLoadEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntitiesLoadEvent(org.bukkit.event.world.EntitiesLoadEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntitiesLoadEvent", d, e);
+    }
+
+    // org.bukkit.event.world.EntitiesUnloadEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntitiesUnloadEvent(org.bukkit.event.world.EntitiesUnloadEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntitiesUnloadEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityAirChangeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityAirChangeEvent(org.bukkit.event.entity.EntityAirChangeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityAirChangeEvent", d, e);
+    }
+
+    // org.bukkit.event.block.EntityBlockFormEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityBlockFormEvent(org.bukkit.event.block.EntityBlockFormEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityBlockFormEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityBreakDoorEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityBreakDoorEvent(org.bukkit.event.entity.EntityBreakDoorEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityBreakDoorEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityBreedEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityBreedEvent(org.bukkit.event.entity.EntityBreedEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityBreedEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityChangeBlockEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityChangeBlockEvent(org.bukkit.event.entity.EntityChangeBlockEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityChangeBlockEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityCombustByBlockEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityCombustByBlockEvent(org.bukkit.event.entity.EntityCombustByBlockEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityCombustByBlockEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityCombustByEntityEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityCombustByEntityEvent(org.bukkit.event.entity.EntityCombustByEntityEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityCombustByEntityEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityCombustEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityCombustEvent(org.bukkit.event.entity.EntityCombustEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityCombustEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityCreatePortalEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityCreatePortalEvent(org.bukkit.event.entity.EntityCreatePortalEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityCreatePortalEvent", d, e);
+    }
+
+    // org.bukkit.event.world.PortalCreateEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPortalCreateEvent(org.bukkit.event.world.PortalCreateEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PortalCreateEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityDamageByBlockEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityDamageByBlockEvent(org.bukkit.event.entity.EntityDamageByBlockEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityDamageByBlockEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityDamageByEntityEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityDamageByEntityEvent(org.bukkit.event.entity.EntityDamageByEntityEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityDamageByEntityEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityDamageEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityDamageEvent(org.bukkit.event.entity.EntityDamageEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityDamageEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityDeathEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityDeathEvent(org.bukkit.event.entity.EntityDeathEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityDeathEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityDismountEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityDismountEvent(org.bukkit.event.entity.EntityDismountEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityDismountEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityDropItemEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityDropItemEvent(org.bukkit.event.entity.EntityDropItemEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityDropItemEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityEnterBlockEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityEnterBlockEvent(org.bukkit.event.entity.EntityEnterBlockEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityEnterBlockEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityEnterLoveModeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityEnterLoveModeEvent(org.bukkit.event.entity.EntityEnterLoveModeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityEnterLoveModeEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityEvent(org.bukkit.event.entity.EntityEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityExhaustionEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityExhaustionEvent(org.bukkit.event.entity.EntityExhaustionEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityExhaustionEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityExplodeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityExplodeEvent(org.bukkit.event.entity.EntityExplodeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityExplodeEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityInteractEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityInteractEvent(org.bukkit.event.entity.EntityInteractEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityInteractEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityKnockbackByEntityEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityKnockbackByEntityEvent(org.bukkit.event.entity.EntityKnockbackByEntityEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityKnockbackByEntityEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityKnockbackEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityKnockbackEvent(org.bukkit.event.entity.EntityKnockbackEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityKnockbackEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityMountEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityMountEvent(org.bukkit.event.entity.EntityMountEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityMountEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityPickupItemEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityPickupItemEvent(org.bukkit.event.entity.EntityPickupItemEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityPickupItemEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityPlaceEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityPlaceEvent(org.bukkit.event.entity.EntityPlaceEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityPlaceEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityPortalEnterEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityPortalEnterEvent(org.bukkit.event.entity.EntityPortalEnterEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityPortalEnterEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityPortalEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityPortalEvent(org.bukkit.event.entity.EntityPortalEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityPortalEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityPortalExitEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityPortalExitEvent(org.bukkit.event.entity.EntityPortalExitEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityPortalExitEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityPoseChangeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityPoseChangeEvent(org.bukkit.event.entity.EntityPoseChangeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityPoseChangeEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityPotionEffectEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityPotionEffectEvent(org.bukkit.event.entity.EntityPotionEffectEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityPotionEffectEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityRegainHealthEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityRegainHealthEvent(org.bukkit.event.entity.EntityRegainHealthEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityRegainHealthEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityRemoveEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityRemoveEvent(org.bukkit.event.entity.EntityRemoveEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityRemoveEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityResurrectEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityResurrectEvent(org.bukkit.event.entity.EntityResurrectEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityResurrectEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityShootBowEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityShootBowEvent(org.bukkit.event.entity.EntityShootBowEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityShootBowEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntitySpawnEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntitySpawnEvent(org.bukkit.event.entity.EntitySpawnEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntitySpawnEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntitySpellCastEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntitySpellCastEvent(org.bukkit.event.entity.EntitySpellCastEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntitySpellCastEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityTameEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityTameEvent(org.bukkit.event.entity.EntityTameEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityTameEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityTargetBlockEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityTargetBlockEvent(org.bukkit.event.entity.EntityTargetBlockEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityTargetBlockEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityTargetEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityTargetEvent(org.bukkit.event.entity.EntityTargetEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityTargetEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityTargetLivingEntityEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityTargetLivingEntityEvent(org.bukkit.event.entity.EntityTargetLivingEntityEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityTargetLivingEntityEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityTeleportEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityTeleportEvent(org.bukkit.event.entity.EntityTeleportEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityTeleportEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityToggleGlideEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityToggleGlideEvent(org.bukkit.event.entity.EntityToggleGlideEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityToggleGlideEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityToggleSwimEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityToggleSwimEvent(org.bukkit.event.entity.EntityToggleSwimEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityToggleSwimEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityTransformEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityTransformEvent(org.bukkit.event.entity.EntityTransformEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityTransformEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityUnleashEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityUnleashEvent(org.bukkit.event.entity.EntityUnleashEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityUnleashEvent", d, e);
+    }
+
+    // org.bukkit.event.Event
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEvent(org.bukkit.event.Event e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.Event", d, e);
+    }
+
+    // org.bukkit.event.entity.ExpBottleEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onExpBottleEvent(org.bukkit.event.entity.ExpBottleEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.ExpBottleEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.ExplosionPrimeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onExplosionPrimeEvent(org.bukkit.event.entity.ExplosionPrimeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.ExplosionPrimeEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.FireworkExplodeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onFireworkExplodeEvent(org.bukkit.event.entity.FireworkExplodeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.FireworkExplodeEvent", d, e);
+    }
+
+    // org.bukkit.event.block.FluidLevelChangeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onFluidLevelChangeEvent(org.bukkit.event.block.FluidLevelChangeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.FluidLevelChangeEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.FoodLevelChangeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onFoodLevelChangeEvent(org.bukkit.event.entity.FoodLevelChangeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.FoodLevelChangeEvent", d, e);
+    }
+
+    // org.bukkit.event.inventory.FurnaceBurnEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onFurnaceBurnEvent(org.bukkit.event.inventory.FurnaceBurnEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.FurnaceBurnEvent", d, e);
+    }
+
+    // org.bukkit.event.inventory.FurnaceExtractEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onFurnaceExtractEvent(org.bukkit.event.inventory.FurnaceExtractEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.FurnaceExtractEvent", d, e);
+    }
+
+    // org.bukkit.event.inventory.FurnaceSmeltEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onFurnaceSmeltEvent(org.bukkit.event.inventory.FurnaceSmeltEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.FurnaceSmeltEvent", d, e);
+    }
+
+    // org.bukkit.event.inventory.FurnaceStartSmeltEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onFurnaceStartSmeltEvent(org.bukkit.event.inventory.FurnaceStartSmeltEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.FurnaceStartSmeltEvent", d, e);
+    }
+
+    // org.bukkit.event.world.GenericGameEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onGenericGameEvent(org.bukkit.event.world.GenericGameEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.GenericGameEvent", d, e);
+    }
+
+    // org.bukkit.event.hanging.HangingBreakByEntityEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onHangingBreakByEntityEvent(org.bukkit.event.hanging.HangingBreakByEntityEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.HangingBreakByEntityEvent", d, e);
+    }
+
+    // org.bukkit.event.hanging.HangingBreakEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onHangingBreakEvent(org.bukkit.event.hanging.HangingBreakEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.HangingBreakEvent", d, e);
+    }
+
+    // org.bukkit.event.hanging.HangingEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onHangingEvent(org.bukkit.event.hanging.HangingEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.HangingEvent", d, e);
+    }
+
+    // org.bukkit.event.hanging.HangingPlaceEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onHangingPlaceEvent(org.bukkit.event.hanging.HangingPlaceEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.HangingPlaceEvent", d, e);
+    }
+
+    // org.bukkit.event.inventory.HopperInventorySearchEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onHopperInventorySearchEvent(org.bukkit.event.inventory.HopperInventorySearchEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.HopperInventorySearchEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.HorseJumpEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onHorseJumpEvent(org.bukkit.event.entity.HorseJumpEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.HorseJumpEvent", d, e);
+    }
+
+    // org.bukkit.event.block.InventoryBlockStartEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onInventoryBlockStartEvent(org.bukkit.event.block.InventoryBlockStartEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.InventoryBlockStartEvent", d, e);
+    }
+
+    // org.bukkit.event.inventory.FurnaceStartSmeltEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onFurnaceStartSmeltEvent(org.bukkit.event.inventory.FurnaceStartSmeltEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.FurnaceStartSmeltEvent", d, e);
+    }
+
+    // org.bukkit.event.block.BrewingStartEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBrewingStartEvent(org.bukkit.event.block.BrewingStartEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.BrewingStartEvent", d, e);
+    }
+
+    // org.bukkit.event.block.CampfireStartEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onCampfireStartEvent(org.bukkit.event.block.CampfireStartEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.CampfireStartEvent", d, e);
+    }
+
+    // org.bukkit.event.inventory.InventoryClickEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onInventoryClickEvent(org.bukkit.event.inventory.InventoryClickEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.InventoryClickEvent", d, e);
+    }
+
+    // org.bukkit.event.inventory.InventoryCloseEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onInventoryCloseEvent(org.bukkit.event.inventory.InventoryCloseEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.InventoryCloseEvent", d, e);
+    }
+
+    // org.bukkit.event.inventory.InventoryCreativeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onInventoryCreativeEvent(org.bukkit.event.inventory.InventoryCreativeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.InventoryCreativeEvent", d, e);
+    }
+
+    // org.bukkit.event.inventory.InventoryDragEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onInventoryDragEvent(org.bukkit.event.inventory.InventoryDragEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.InventoryDragEvent", d, e);
+    }
+
+    // org.bukkit.event.inventory.InventoryEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onInventoryEvent(org.bukkit.event.inventory.InventoryEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.InventoryEvent", d, e);
+    }
+
+    // org.bukkit.event.inventory.InventoryInteractEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onInventoryInteractEvent(org.bukkit.event.inventory.InventoryInteractEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.InventoryInteractEvent", d, e);
+    }
+
+    // org.bukkit.event.inventory.InventoryMoveItemEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onInventoryMoveItemEvent(org.bukkit.event.inventory.InventoryMoveItemEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.InventoryMoveItemEvent", d, e);
+    }
+
+    // org.bukkit.event.inventory.InventoryOpenEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onInventoryOpenEvent(org.bukkit.event.inventory.InventoryOpenEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.InventoryOpenEvent", d, e);
+    }
+
+    // org.bukkit.event.inventory.InventoryPickupItemEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onInventoryPickupItemEvent(org.bukkit.event.inventory.InventoryPickupItemEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.InventoryPickupItemEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.ItemDespawnEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onItemDespawnEvent(org.bukkit.event.entity.ItemDespawnEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.ItemDespawnEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.ItemMergeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onItemMergeEvent(org.bukkit.event.entity.ItemMergeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.ItemMergeEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.ItemSpawnEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onItemSpawnEvent(org.bukkit.event.entity.ItemSpawnEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.ItemSpawnEvent", d, e);
+    }
+
+    // org.bukkit.event.block.LeavesDecayEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onLeavesDecayEvent(org.bukkit.event.block.LeavesDecayEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.LeavesDecayEvent", d, e);
+    }
+
+    // org.bukkit.event.weather.LightningStrikeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onLightningStrikeEvent(org.bukkit.event.weather.LightningStrikeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.LightningStrikeEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.LingeringPotionSplashEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onLingeringPotionSplashEvent(org.bukkit.event.entity.LingeringPotionSplashEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.LingeringPotionSplashEvent", d, e);
+    }
+
+    // org.bukkit.event.world.LootGenerateEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onLootGenerateEvent(org.bukkit.event.world.LootGenerateEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.LootGenerateEvent", d, e);
+    }
+
+    // org.bukkit.event.server.MapInitializeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onMapInitializeEvent(org.bukkit.event.server.MapInitializeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.MapInitializeEvent", d, e);
+    }
+
+    // org.bukkit.event.block.MoistureChangeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onMoistureChangeEvent(org.bukkit.event.block.MoistureChangeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.MoistureChangeEvent", d, e);
+    }
+
+    // org.bukkit.event.block.NotePlayEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onNotePlayEvent(org.bukkit.event.block.NotePlayEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.NotePlayEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.PiglinBarterEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPiglinBarterEvent(org.bukkit.event.entity.PiglinBarterEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PiglinBarterEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.PigZapEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPigZapEvent(org.bukkit.event.entity.PigZapEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PigZapEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.PigZombieAngerEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPigZombieAngerEvent(org.bukkit.event.entity.PigZombieAngerEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PigZombieAngerEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerAdvancementDoneEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerAdvancementDoneEvent(org.bukkit.event.player.PlayerAdvancementDoneEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerAdvancementDoneEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerAnimationEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerAnimationEvent(org.bukkit.event.player.PlayerAnimationEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerAnimationEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerArmorStandManipulateEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerArmorStandManipulateEvent(org.bukkit.event.player.PlayerArmorStandManipulateEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerArmorStandManipulateEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerBedEnterEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerBedEnterEvent(org.bukkit.event.player.PlayerBedEnterEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerBedEnterEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerBedLeaveEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerBedLeaveEvent(org.bukkit.event.player.PlayerBedLeaveEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerBedLeaveEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerBucketEmptyEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerBucketEmptyEvent(org.bukkit.event.player.PlayerBucketEmptyEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerBucketEmptyEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerBucketEntityEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerBucketEntityEvent(org.bukkit.event.player.PlayerBucketEntityEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerBucketEntityEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerBucketEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerBucketEvent(org.bukkit.event.player.PlayerBucketEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerBucketEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerBucketFillEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerBucketFillEvent(org.bukkit.event.player.PlayerBucketFillEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerBucketFillEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerBucketFishEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerBucketFishEvent(org.bukkit.event.player.PlayerBucketFishEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerBucketFishEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerBucketEntityEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerBucketEntityEvent(org.bukkit.event.player.PlayerBucketEntityEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerBucketEntityEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerChangedMainHandEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerChangedMainHandEvent(org.bukkit.event.player.PlayerChangedMainHandEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerChangedMainHandEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerChangedWorldEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerChangedWorldEvent(org.bukkit.event.player.PlayerChangedWorldEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerChangedWorldEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerChannelEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerChannelEvent(org.bukkit.event.player.PlayerChannelEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerChannelEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerChatEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerChatEvent(org.bukkit.event.player.PlayerChatEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerChatEvent", d, e);
+    }
+
+    // org.bukkit.event.player.AsyncPlayerChatEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onAsyncPlayerChatEvent(org.bukkit.event.player.AsyncPlayerChatEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.AsyncPlayerChatEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerChatTabCompleteEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerChatTabCompleteEvent(org.bukkit.event.player.PlayerChatTabCompleteEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerChatTabCompleteEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerCommandPreprocessEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerCommandPreprocessEvent(org.bukkit.event.player.PlayerCommandPreprocessEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerCommandPreprocessEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerCommandSendEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerCommandSendEvent(org.bukkit.event.player.PlayerCommandSendEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerCommandSendEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerCustomClickEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerCustomClickEvent(org.bukkit.event.player.PlayerCustomClickEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerCustomClickEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.PlayerDeathEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerDeathEvent(org.bukkit.event.entity.PlayerDeathEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerDeathEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerDropItemEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerDropItemEvent(org.bukkit.event.player.PlayerDropItemEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerDropItemEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerEditBookEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerEditBookEvent(org.bukkit.event.player.PlayerEditBookEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerEditBookEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerEggThrowEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerEggThrowEvent(org.bukkit.event.player.PlayerEggThrowEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerEggThrowEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerEvent(org.bukkit.event.player.PlayerEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerExpChangeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerExpChangeEvent(org.bukkit.event.player.PlayerExpChangeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerExpChangeEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerExpCooldownChangeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerExpCooldownChangeEvent(org.bukkit.event.player.PlayerExpCooldownChangeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerExpCooldownChangeEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerFishEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerFishEvent(org.bukkit.event.player.PlayerFishEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerFishEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerGameModeChangeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerGameModeChangeEvent(org.bukkit.event.player.PlayerGameModeChangeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerGameModeChangeEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerHarvestBlockEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerHarvestBlockEvent(org.bukkit.event.player.PlayerHarvestBlockEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerHarvestBlockEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerHideEntityEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerHideEntityEvent(org.bukkit.event.player.PlayerHideEntityEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerHideEntityEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerInputEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerInputEvent(org.bukkit.event.player.PlayerInputEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerInputEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerInteractAtEntityEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerInteractAtEntityEvent(org.bukkit.event.player.PlayerInteractAtEntityEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerInteractAtEntityEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerInteractEntityEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerInteractEntityEvent(org.bukkit.event.player.PlayerInteractEntityEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerInteractEntityEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerInteractEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerInteractEvent(org.bukkit.event.player.PlayerInteractEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerInteractEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerItemBreakEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerItemBreakEvent(org.bukkit.event.player.PlayerItemBreakEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerItemBreakEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerItemConsumeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerItemConsumeEvent(org.bukkit.event.player.PlayerItemConsumeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerItemConsumeEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerItemDamageEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerItemDamageEvent(org.bukkit.event.player.PlayerItemDamageEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerItemDamageEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerItemHeldEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerItemHeldEvent(org.bukkit.event.player.PlayerItemHeldEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerItemHeldEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerItemMendEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerItemMendEvent(org.bukkit.event.player.PlayerItemMendEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerItemMendEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerJoinEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerJoinEvent(org.bukkit.event.player.PlayerJoinEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerJoinEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerKickEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerKickEvent(org.bukkit.event.player.PlayerKickEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerKickEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.PlayerLeashEntityEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerLeashEntityEvent(org.bukkit.event.entity.PlayerLeashEntityEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerLeashEntityEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerLevelChangeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerLevelChangeEvent(org.bukkit.event.player.PlayerLevelChangeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerLevelChangeEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerLinksSendEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerLinksSendEvent(org.bukkit.event.player.PlayerLinksSendEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerLinksSendEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerLocaleChangeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerLocaleChangeEvent(org.bukkit.event.player.PlayerLocaleChangeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerLocaleChangeEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerLoginEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerLoginEvent(org.bukkit.event.player.PlayerLoginEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerLoginEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerMoveEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerMoveEvent(org.bukkit.event.player.PlayerMoveEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerMoveEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerPickupArrowEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerPickupArrowEvent(org.bukkit.event.player.PlayerPickupArrowEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerPickupArrowEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerPickupItemEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerPickupItemEvent(org.bukkit.event.player.PlayerPickupItemEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerPickupItemEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.EntityPickupItemEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityPickupItemEvent(org.bukkit.event.entity.EntityPickupItemEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.EntityPickupItemEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerPortalEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerPortalEvent(org.bukkit.event.player.PlayerPortalEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerPortalEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerPreLoginEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerPreLoginEvent(org.bukkit.event.player.PlayerPreLoginEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerPreLoginEvent", d, e);
+    }
+
+    // org.bukkit.event.player.AsyncPlayerPreLoginEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onAsyncPlayerPreLoginEvent(org.bukkit.event.player.AsyncPlayerPreLoginEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.AsyncPlayerPreLoginEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerQuitEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerQuitEvent(org.bukkit.event.player.PlayerQuitEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerQuitEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerRecipeBookClickEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerRecipeBookClickEvent(org.bukkit.event.player.PlayerRecipeBookClickEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerRecipeBookClickEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerRecipeBookSettingsChangeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerRecipeBookSettingsChangeEvent(org.bukkit.event.player.PlayerRecipeBookSettingsChangeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerRecipeBookSettingsChangeEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerRecipeDiscoverEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerRecipeDiscoverEvent(org.bukkit.event.player.PlayerRecipeDiscoverEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerRecipeDiscoverEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerRegisterChannelEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerRegisterChannelEvent(org.bukkit.event.player.PlayerRegisterChannelEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerRegisterChannelEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerResourcePackStatusEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerResourcePackStatusEvent(org.bukkit.event.player.PlayerResourcePackStatusEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerResourcePackStatusEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerRespawnEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerRespawnEvent(org.bukkit.event.player.PlayerRespawnEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerRespawnEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerRiptideEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerRiptideEvent(org.bukkit.event.player.PlayerRiptideEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerRiptideEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerShearEntityEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerShearEntityEvent(org.bukkit.event.player.PlayerShearEntityEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerShearEntityEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerShowEntityEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerShowEntityEvent(org.bukkit.event.player.PlayerShowEntityEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerShowEntityEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerSignOpenEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerSignOpenEvent(org.bukkit.event.player.PlayerSignOpenEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerSignOpenEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerSpawnChangeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerSpawnChangeEvent(org.bukkit.event.player.PlayerSpawnChangeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerSpawnChangeEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerStatisticIncrementEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerStatisticIncrementEvent(org.bukkit.event.player.PlayerStatisticIncrementEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerStatisticIncrementEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerSwapHandItemsEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerSwapHandItemsEvent(org.bukkit.event.player.PlayerSwapHandItemsEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerSwapHandItemsEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerTakeLecternBookEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerTakeLecternBookEvent(org.bukkit.event.player.PlayerTakeLecternBookEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerTakeLecternBookEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerTeleportEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerTeleportEvent(org.bukkit.event.player.PlayerTeleportEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerTeleportEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerToggleFlightEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerToggleFlightEvent(org.bukkit.event.player.PlayerToggleFlightEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerToggleFlightEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerToggleSneakEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerToggleSneakEvent(org.bukkit.event.player.PlayerToggleSneakEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerToggleSneakEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerToggleSprintEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerToggleSprintEvent(org.bukkit.event.player.PlayerToggleSprintEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerToggleSprintEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerUnleashEntityEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerUnleashEntityEvent(org.bukkit.event.player.PlayerUnleashEntityEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerUnleashEntityEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerUnregisterChannelEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerUnregisterChannelEvent(org.bukkit.event.player.PlayerUnregisterChannelEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerUnregisterChannelEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerVelocityEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerVelocityEvent(org.bukkit.event.player.PlayerVelocityEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PlayerVelocityEvent", d, e);
+    }
+
+    // org.bukkit.event.server.PluginDisableEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPluginDisableEvent(org.bukkit.event.server.PluginDisableEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PluginDisableEvent", d, e);
+    }
+
+    // org.bukkit.event.server.PluginEnableEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPluginEnableEvent(org.bukkit.event.server.PluginEnableEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PluginEnableEvent", d, e);
+    }
+
+    // org.bukkit.event.server.PluginEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPluginEvent(org.bukkit.event.server.PluginEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PluginEvent", d, e);
+    }
+
+    // org.bukkit.event.world.PortalCreateEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPortalCreateEvent(org.bukkit.event.world.PortalCreateEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PortalCreateEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.PotionSplashEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPotionSplashEvent(org.bukkit.event.entity.PotionSplashEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PotionSplashEvent", d, e);
+    }
+
+    // org.bukkit.event.inventory.PrepareAnvilEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPrepareAnvilEvent(org.bukkit.event.inventory.PrepareAnvilEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PrepareAnvilEvent", d, e);
+    }
+
+    // org.bukkit.event.inventory.PrepareGrindstoneEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPrepareGrindstoneEvent(org.bukkit.event.inventory.PrepareGrindstoneEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PrepareGrindstoneEvent", d, e);
+    }
+
+    // org.bukkit.event.inventory.PrepareInventoryResultEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPrepareInventoryResultEvent(org.bukkit.event.inventory.PrepareInventoryResultEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PrepareInventoryResultEvent", d, e);
+    }
+
+    // org.bukkit.event.inventory.PrepareItemCraftEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPrepareItemCraftEvent(org.bukkit.event.inventory.PrepareItemCraftEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PrepareItemCraftEvent", d, e);
+    }
+
+    // org.bukkit.event.enchantment.PrepareItemEnchantEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPrepareItemEnchantEvent(org.bukkit.event.enchantment.PrepareItemEnchantEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PrepareItemEnchantEvent", d, e);
+    }
+
+    // org.bukkit.event.inventory.PrepareSmithingEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPrepareSmithingEvent(org.bukkit.event.inventory.PrepareSmithingEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.PrepareSmithingEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.ProjectileHitEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onProjectileHitEvent(org.bukkit.event.entity.ProjectileHitEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.ProjectileHitEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.ProjectileLaunchEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onProjectileLaunchEvent(org.bukkit.event.entity.ProjectileLaunchEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.ProjectileLaunchEvent", d, e);
+    }
+
+    // org.bukkit.event.raid.RaidEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onRaidEvent(org.bukkit.event.raid.RaidEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.RaidEvent", d, e);
+    }
+
+    // org.bukkit.event.raid.RaidFinishEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onRaidFinishEvent(org.bukkit.event.raid.RaidFinishEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.RaidFinishEvent", d, e);
+    }
+
+    // org.bukkit.event.raid.RaidSpawnWaveEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onRaidSpawnWaveEvent(org.bukkit.event.raid.RaidSpawnWaveEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.RaidSpawnWaveEvent", d, e);
+    }
+
+    // org.bukkit.event.raid.RaidStopEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onRaidStopEvent(org.bukkit.event.raid.RaidStopEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.RaidStopEvent", d, e);
+    }
+
+    // org.bukkit.event.raid.RaidTriggerEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onRaidTriggerEvent(org.bukkit.event.raid.RaidTriggerEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.RaidTriggerEvent", d, e);
+    }
+
+    // org.bukkit.event.server.RemoteServerCommandEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onRemoteServerCommandEvent(org.bukkit.event.server.RemoteServerCommandEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.RemoteServerCommandEvent", d, e);
+    }
+
+    // org.bukkit.event.block.SculkBloomEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onSculkBloomEvent(org.bukkit.event.block.SculkBloomEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.SculkBloomEvent", d, e);
+    }
+
+    // org.bukkit.event.server.ServerCommandEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onServerCommandEvent(org.bukkit.event.server.ServerCommandEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.ServerCommandEvent", d, e);
+    }
+
+    // org.bukkit.event.server.ServerEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onServerEvent(org.bukkit.event.server.ServerEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.ServerEvent", d, e);
+    }
+
+    // org.bukkit.event.server.ServerListPingEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onServerListPingEvent(org.bukkit.event.server.ServerListPingEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.ServerListPingEvent", d, e);
+    }
+
+    // org.bukkit.event.server.ServerLoadEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onServerLoadEvent(org.bukkit.event.server.ServerLoadEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.ServerLoadEvent", d, e);
+    }
+
+    // org.bukkit.event.server.ServiceEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onServiceEvent(org.bukkit.event.server.ServiceEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.ServiceEvent", d, e);
+    }
+
+    // org.bukkit.event.server.ServiceRegisterEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onServiceRegisterEvent(org.bukkit.event.server.ServiceRegisterEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.ServiceRegisterEvent", d, e);
+    }
+
+    // org.bukkit.event.server.ServiceUnregisterEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onServiceUnregisterEvent(org.bukkit.event.server.ServiceUnregisterEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.ServiceUnregisterEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.SheepDyeWoolEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onSheepDyeWoolEvent(org.bukkit.event.entity.SheepDyeWoolEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.SheepDyeWoolEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.SheepRegrowWoolEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onSheepRegrowWoolEvent(org.bukkit.event.entity.SheepRegrowWoolEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.SheepRegrowWoolEvent", d, e);
+    }
+
+    // org.bukkit.event.block.SignChangeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onSignChangeEvent(org.bukkit.event.block.SignChangeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.SignChangeEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.SlimeSplitEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onSlimeSplitEvent(org.bukkit.event.entity.SlimeSplitEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.SlimeSplitEvent", d, e);
+    }
+
+    // org.bukkit.event.inventory.SmithItemEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onSmithItemEvent(org.bukkit.event.inventory.SmithItemEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.SmithItemEvent", d, e);
+    }
+
+    // org.bukkit.event.world.SpawnChangeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onSpawnChangeEvent(org.bukkit.event.world.SpawnChangeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.SpawnChangeEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.SpawnerSpawnEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onSpawnerSpawnEvent(org.bukkit.event.entity.SpawnerSpawnEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.SpawnerSpawnEvent", d, e);
+    }
+
+    // org.bukkit.event.block.SpongeAbsorbEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onSpongeAbsorbEvent(org.bukkit.event.block.SpongeAbsorbEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.SpongeAbsorbEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.StriderTemperatureChangeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onStriderTemperatureChangeEvent(org.bukkit.event.entity.StriderTemperatureChangeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.StriderTemperatureChangeEvent", d, e);
+    }
+
+    // org.bukkit.event.world.StructureGrowEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onStructureGrowEvent(org.bukkit.event.world.StructureGrowEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.StructureGrowEvent", d, e);
+    }
+
+    // org.bukkit.event.server.TabCompleteEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onTabCompleteEvent(org.bukkit.event.server.TabCompleteEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.TabCompleteEvent", d, e);
+    }
+
+    // org.bukkit.event.weather.ThunderChangeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onThunderChangeEvent(org.bukkit.event.weather.ThunderChangeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.ThunderChangeEvent", d, e);
+    }
+
+    // org.bukkit.event.world.TimeSkipEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onTimeSkipEvent(org.bukkit.event.world.TimeSkipEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.TimeSkipEvent", d, e);
+    }
+
+    // org.bukkit.event.block.TNTPrimeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onTNTPrimeEvent(org.bukkit.event.block.TNTPrimeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.TNTPrimeEvent", d, e);
+    }
+
+    // org.bukkit.event.inventory.TradeSelectEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onTradeSelectEvent(org.bukkit.event.inventory.TradeSelectEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.TradeSelectEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.TrialSpawnerSpawnEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onTrialSpawnerSpawnEvent(org.bukkit.event.entity.TrialSpawnerSpawnEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.TrialSpawnerSpawnEvent", d, e);
+    }
+
+    // org.bukkit.event.block.VaultDisplayItemEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onVaultDisplayItemEvent(org.bukkit.event.block.VaultDisplayItemEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.VaultDisplayItemEvent", d, e);
+    }
+
+    // org.bukkit.event.vehicle.VehicleBlockCollisionEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onVehicleBlockCollisionEvent(org.bukkit.event.vehicle.VehicleBlockCollisionEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.VehicleBlockCollisionEvent", d, e);
+    }
+
+    // org.bukkit.event.vehicle.VehicleCollisionEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onVehicleCollisionEvent(org.bukkit.event.vehicle.VehicleCollisionEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.VehicleCollisionEvent", d, e);
+    }
+
+    // org.bukkit.event.vehicle.VehicleCreateEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onVehicleCreateEvent(org.bukkit.event.vehicle.VehicleCreateEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.VehicleCreateEvent", d, e);
+    }
+
+    // org.bukkit.event.vehicle.VehicleDamageEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onVehicleDamageEvent(org.bukkit.event.vehicle.VehicleDamageEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.VehicleDamageEvent", d, e);
+    }
+
+    // org.bukkit.event.vehicle.VehicleDestroyEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onVehicleDestroyEvent(org.bukkit.event.vehicle.VehicleDestroyEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.VehicleDestroyEvent", d, e);
+    }
+
+    // org.bukkit.event.vehicle.VehicleEnterEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onVehicleEnterEvent(org.bukkit.event.vehicle.VehicleEnterEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.VehicleEnterEvent", d, e);
+    }
+
+    // org.bukkit.event.vehicle.VehicleEntityCollisionEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onVehicleEntityCollisionEvent(org.bukkit.event.vehicle.VehicleEntityCollisionEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.VehicleEntityCollisionEvent", d, e);
+    }
+
+    // org.bukkit.event.vehicle.VehicleEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onVehicleEvent(org.bukkit.event.vehicle.VehicleEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.VehicleEvent", d, e);
+    }
+
+    // org.bukkit.event.vehicle.VehicleExitEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onVehicleExitEvent(org.bukkit.event.vehicle.VehicleExitEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.VehicleExitEvent", d, e);
+    }
+
+    // org.bukkit.event.vehicle.VehicleMoveEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onVehicleMoveEvent(org.bukkit.event.vehicle.VehicleMoveEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.VehicleMoveEvent", d, e);
+    }
+
+    // org.bukkit.event.vehicle.VehicleUpdateEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onVehicleUpdateEvent(org.bukkit.event.vehicle.VehicleUpdateEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.VehicleUpdateEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.VillagerAcquireTradeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onVillagerAcquireTradeEvent(org.bukkit.event.entity.VillagerAcquireTradeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.VillagerAcquireTradeEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.VillagerCareerChangeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onVillagerCareerChangeEvent(org.bukkit.event.entity.VillagerCareerChangeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.VillagerCareerChangeEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.VillagerReplenishTradeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onVillagerReplenishTradeEvent(org.bukkit.event.entity.VillagerReplenishTradeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.VillagerReplenishTradeEvent", d, e);
+    }
+
+    // org.bukkit.event.entity.VillagerReputationChangeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onVillagerReputationChangeEvent(org.bukkit.event.entity.VillagerReputationChangeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.VillagerReputationChangeEvent", d, e);
+    }
+
+    // org.bukkit.event.weather.WeatherChangeEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onWeatherChangeEvent(org.bukkit.event.weather.WeatherChangeEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.WeatherChangeEvent", d, e);
+    }
+
+    // org.bukkit.event.weather.WeatherEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onWeatherEvent(org.bukkit.event.weather.WeatherEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.WeatherEvent", d, e);
+    }
+
+    // org.bukkit.event.world.WorldEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onWorldEvent(org.bukkit.event.world.WorldEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.WorldEvent", d, e);
+    }
+
+    // org.bukkit.event.world.WorldInitEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onWorldInitEvent(org.bukkit.event.world.WorldInitEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.WorldInitEvent", d, e);
+    }
+
+    // org.bukkit.event.world.WorldLoadEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onWorldLoadEvent(org.bukkit.event.world.WorldLoadEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.WorldLoadEvent", d, e);
+    }
+
+    // org.bukkit.event.world.WorldSaveEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onWorldSaveEvent(org.bukkit.event.world.WorldSaveEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.WorldSaveEvent", d, e);
+    }
+
+    // org.bukkit.event.world.WorldUnloadEvent
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onWorldUnloadEvent(org.bukkit.event.world.WorldUnloadEvent e) {
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "bukkit");
+        api.getDispatcher().dispatch("event.WorldUnloadEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.block.AnvilDamagedEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onAnvilDamagedEvent(com.destroystokyo.paper.event.block.AnvilDamagedEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.AnvilDamagedEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.AsyncChatCommandDecorateEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onAsyncChatCommandDecorateEvent(io.papermc.paper.event.player.AsyncChatCommandDecorateEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.AsyncChatCommandDecorateEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.AsyncChatDecorateEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onAsyncChatDecorateEvent(io.papermc.paper.event.player.AsyncChatDecorateEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.AsyncChatDecorateEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.AsyncChatEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onAsyncChatEvent(io.papermc.paper.event.player.AsyncChatEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.AsyncChatEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.AsyncChatEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onAsyncChatEvent(io.papermc.paper.event.player.AsyncChatEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.AsyncChatEvent", d, e);
+    }
+
+    // io.papermc.paper.event.connection.configuration.AsyncPlayerConnectionConfigureEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onAsyncPlayerConnectionConfigureEvent(io.papermc.paper.event.connection.configuration.AsyncPlayerConnectionConfigureEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.AsyncPlayerConnectionConfigureEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.brigadier.AsyncPlayerSendCommandsEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onAsyncPlayerSendCommandsEvent(com.destroystokyo.paper.event.brigadier.AsyncPlayerSendCommandsEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.AsyncPlayerSendCommandsEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.brigadier.AsyncPlayerSendSuggestionsEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onAsyncPlayerSendSuggestionsEvent(com.destroystokyo.paper.event.brigadier.AsyncPlayerSendSuggestionsEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.AsyncPlayerSendSuggestionsEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.server.AsyncTabCompleteEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onAsyncTabCompleteEvent(com.destroystokyo.paper.event.server.AsyncTabCompleteEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.AsyncTabCompleteEvent", d, e);
+    }
+
+    // io.papermc.paper.event.block.BeaconActivatedEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBeaconActivatedEvent(io.papermc.paper.event.block.BeaconActivatedEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.BeaconActivatedEvent", d, e);
+    }
+
+    // io.papermc.paper.event.block.BeaconDeactivatedEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBeaconDeactivatedEvent(io.papermc.paper.event.block.BeaconDeactivatedEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.BeaconDeactivatedEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.block.BeaconEffectEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBeaconEffectEvent(com.destroystokyo.paper.event.block.BeaconEffectEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.BeaconEffectEvent", d, e);
+    }
+
+    // io.papermc.paper.event.block.BellRevealRaiderEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBellRevealRaiderEvent(io.papermc.paper.event.block.BellRevealRaiderEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.BellRevealRaiderEvent", d, e);
+    }
+
+    // io.papermc.paper.event.block.BlockBreakBlockEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockBreakBlockEvent(io.papermc.paper.event.block.BlockBreakBlockEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.BlockBreakBlockEvent", d, e);
+    }
+
+    // io.papermc.paper.event.block.BlockBreakProgressUpdateEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockBreakProgressUpdateEvent(io.papermc.paper.event.block.BlockBreakProgressUpdateEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.BlockBreakProgressUpdateEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.block.BlockDestroyEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockDestroyEvent(com.destroystokyo.paper.event.block.BlockDestroyEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.BlockDestroyEvent", d, e);
+    }
+
+    // io.papermc.paper.event.block.BlockFailedDispenseEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockFailedDispenseEvent(io.papermc.paper.event.block.BlockFailedDispenseEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.BlockFailedDispenseEvent", d, e);
+    }
+
+    // io.papermc.paper.event.block.BlockLockCheckEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockLockCheckEvent(io.papermc.paper.event.block.BlockLockCheckEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.BlockLockCheckEvent", d, e);
+    }
+
+    // io.papermc.paper.event.block.BlockPreDispenseEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onBlockPreDispenseEvent(io.papermc.paper.event.block.BlockPreDispenseEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.BlockPreDispenseEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.CartographyItemEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onCartographyItemEvent(io.papermc.paper.event.player.CartographyItemEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.CartographyItemEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.ChatEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onChatEvent(io.papermc.paper.event.player.ChatEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.ChatEvent", d, e);
+    }
+
+    // io.papermc.paper.event.packet.ClientTickEndEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onClientTickEndEvent(io.papermc.paper.event.packet.ClientTickEndEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.ClientTickEndEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.brigadier.CommandRegisteredEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onCommandRegisteredEvent(com.destroystokyo.paper.event.brigadier.CommandRegisteredEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.CommandRegisteredEvent", d, e);
+    }
+
+    // io.papermc.paper.event.block.CompostItemEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onCompostItemEvent(io.papermc.paper.event.block.CompostItemEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.CompostItemEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.CreeperIgniteEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onCreeperIgniteEvent(com.destroystokyo.paper.event.entity.CreeperIgniteEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.CreeperIgniteEvent", d, e);
+    }
+
+    // io.papermc.paper.event.block.DragonEggFormEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onDragonEggFormEvent(io.papermc.paper.event.block.DragonEggFormEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.DragonEggFormEvent", d, e);
+    }
+
+    // io.papermc.paper.event.entity.ElderGuardianAppearanceEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onElderGuardianAppearanceEvent(io.papermc.paper.event.entity.ElderGuardianAppearanceEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.ElderGuardianAppearanceEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.EnderDragonFireballHitEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEnderDragonFireballHitEvent(com.destroystokyo.paper.event.entity.EnderDragonFireballHitEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.EnderDragonFireballHitEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.EnderDragonFlameEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEnderDragonFlameEvent(com.destroystokyo.paper.event.entity.EnderDragonFlameEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.EnderDragonFlameEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.EnderDragonShootFireballEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEnderDragonShootFireballEvent(com.destroystokyo.paper.event.entity.EnderDragonShootFireballEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.EnderDragonShootFireballEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.EndermanAttackPlayerEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEndermanAttackPlayerEvent(com.destroystokyo.paper.event.entity.EndermanAttackPlayerEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.EndermanAttackPlayerEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.EndermanEscapeEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEndermanEscapeEvent(com.destroystokyo.paper.event.entity.EndermanEscapeEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.EndermanEscapeEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.EntityAddToWorldEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityAddToWorldEvent(com.destroystokyo.paper.event.entity.EntityAddToWorldEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.EntityAddToWorldEvent", d, e);
+    }
+
+    // io.papermc.paper.event.entity.EntityAttemptSmashAttackEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityAttemptSmashAttackEvent(io.papermc.paper.event.entity.EntityAttemptSmashAttackEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.EntityAttemptSmashAttackEvent", d, e);
+    }
+
+    // io.papermc.paper.event.entity.EntityAttemptSpinAttackEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityAttemptSpinAttackEvent(io.papermc.paper.event.entity.EntityAttemptSpinAttackEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.EntityAttemptSpinAttackEvent", d, e);
+    }
+
+    // io.papermc.paper.event.entity.EntityCompostItemEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityCompostItemEvent(io.papermc.paper.event.entity.EntityCompostItemEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.EntityCompostItemEvent", d, e);
+    }
+
+    // io.papermc.paper.event.entity.EntityDamageItemEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityDamageItemEvent(io.papermc.paper.event.entity.EntityDamageItemEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.EntityDamageItemEvent", d, e);
+    }
+
+    // io.papermc.paper.event.entity.EntityDyeEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityDyeEvent(io.papermc.paper.event.entity.EntityDyeEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.EntityDyeEvent", d, e);
+    }
+
+    // io.papermc.paper.event.entity.EntityEffectTickEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityEffectTickEvent(io.papermc.paper.event.entity.EntityEffectTickEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.EntityEffectTickEvent", d, e);
+    }
+
+    // io.papermc.paper.event.entity.EntityEquipmentChangedEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityEquipmentChangedEvent(io.papermc.paper.event.entity.EntityEquipmentChangedEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.EntityEquipmentChangedEvent", d, e);
+    }
+
+    // io.papermc.paper.event.entity.EntityFertilizeEggEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityFertilizeEggEvent(io.papermc.paper.event.entity.EntityFertilizeEggEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.EntityFertilizeEggEvent", d, e);
+    }
+
+    // io.papermc.paper.event.entity.EntityInsideBlockEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityInsideBlockEvent(io.papermc.paper.event.entity.EntityInsideBlockEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.EntityInsideBlockEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.EntityJumpEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityJumpEvent(com.destroystokyo.paper.event.entity.EntityJumpEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.EntityJumpEvent", d, e);
+    }
+
+    // io.papermc.paper.event.entity.EntityLoadCrossbowEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityLoadCrossbowEvent(io.papermc.paper.event.entity.EntityLoadCrossbowEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.EntityLoadCrossbowEvent", d, e);
+    }
+
+    // io.papermc.paper.event.entity.EntityMoveEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityMoveEvent(io.papermc.paper.event.entity.EntityMoveEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.EntityMoveEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.EntityPathfindEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityPathfindEvent(com.destroystokyo.paper.event.entity.EntityPathfindEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.EntityPathfindEvent", d, e);
+    }
+
+    // io.papermc.paper.event.entity.EntityPortalReadyEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityPortalReadyEvent(io.papermc.paper.event.entity.EntityPortalReadyEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.EntityPortalReadyEvent", d, e);
+    }
+
+    // io.papermc.paper.event.entity.EntityPushedByEntityAttackEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityPushedByEntityAttackEvent(io.papermc.paper.event.entity.EntityPushedByEntityAttackEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.EntityPushedByEntityAttackEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.EntityRemoveFromWorldEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityRemoveFromWorldEvent(com.destroystokyo.paper.event.entity.EntityRemoveFromWorldEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.EntityRemoveFromWorldEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.EntityTeleportEndGatewayEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityTeleportEndGatewayEvent(com.destroystokyo.paper.event.entity.EntityTeleportEndGatewayEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.EntityTeleportEndGatewayEvent", d, e);
+    }
+
+    // io.papermc.paper.event.entity.EntityToggleSitEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityToggleSitEvent(io.papermc.paper.event.entity.EntityToggleSitEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.EntityToggleSitEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.EntityZapEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onEntityZapEvent(com.destroystokyo.paper.event.entity.EntityZapEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.EntityZapEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.ExperienceOrbMergeEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onExperienceOrbMergeEvent(com.destroystokyo.paper.event.entity.ExperienceOrbMergeEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.ExperienceOrbMergeEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.profile.FillProfileEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onFillProfileEvent(com.destroystokyo.paper.event.profile.FillProfileEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.FillProfileEvent", d, e);
+    }
+
+    // io.papermc.paper.event.entity.FishHookStateChangeEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onFishHookStateChangeEvent(io.papermc.paper.event.entity.FishHookStateChangeEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.FishHookStateChangeEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.server.GS4QueryEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onGS4QueryEvent(com.destroystokyo.paper.event.server.GS4QueryEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.GS4QueryEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.player.IllegalPacketEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onIllegalPacketEvent(com.destroystokyo.paper.event.player.IllegalPacketEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.IllegalPacketEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.profile.LookupProfileEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onLookupProfileEvent(com.destroystokyo.paper.event.profile.LookupProfileEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.LookupProfileEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.server.PaperServerListPingEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPaperServerListPingEvent(com.destroystokyo.paper.event.server.PaperServerListPingEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PaperServerListPingEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.PhantomPreSpawnEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPhantomPreSpawnEvent(com.destroystokyo.paper.event.entity.PhantomPreSpawnEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PhantomPreSpawnEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.player.PlayerAdvancementCriterionGrantEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerAdvancementCriterionGrantEvent(com.destroystokyo.paper.event.player.PlayerAdvancementCriterionGrantEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerAdvancementCriterionGrantEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerArmSwingEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerArmSwingEvent(io.papermc.paper.event.player.PlayerArmSwingEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerArmSwingEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.player.PlayerArmorChangeEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerArmorChangeEvent(com.destroystokyo.paper.event.player.PlayerArmorChangeEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerArmorChangeEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerArmSwingEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerArmSwingEvent(io.papermc.paper.event.player.PlayerArmSwingEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerArmSwingEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.player.PlayerAttackEntityCooldownResetEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerAttackEntityCooldownResetEvent(com.destroystokyo.paper.event.player.PlayerAttackEntityCooldownResetEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerAttackEntityCooldownResetEvent", d, e);
+    }
+
+    // org.bukkit.event.player.PlayerAttemptPickupItemEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerAttemptPickupItemEvent(org.bukkit.event.player.PlayerAttemptPickupItemEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerAttemptPickupItemEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerBedFailEnterEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerBedFailEnterEvent(io.papermc.paper.event.player.PlayerBedFailEnterEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerBedFailEnterEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerChangeBeaconEffectEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerChangeBeaconEffectEvent(io.papermc.paper.event.player.PlayerChangeBeaconEffectEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerChangeBeaconEffectEvent", d, e);
+    }
+
+    // io.papermc.paper.event.packet.PlayerChunkLoadEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerChunkLoadEvent(io.papermc.paper.event.packet.PlayerChunkLoadEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerChunkLoadEvent", d, e);
+    }
+
+    // io.papermc.paper.event.packet.PlayerChunkUnloadEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerChunkUnloadEvent(io.papermc.paper.event.packet.PlayerChunkUnloadEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerChunkUnloadEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerClientLoadedWorldEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerClientLoadedWorldEvent(io.papermc.paper.event.player.PlayerClientLoadedWorldEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerClientLoadedWorldEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.player.PlayerClientOptionsChangeEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerClientOptionsChangeEvent(com.destroystokyo.paper.event.player.PlayerClientOptionsChangeEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerClientOptionsChangeEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.player.PlayerConnectionCloseEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerConnectionCloseEvent(com.destroystokyo.paper.event.player.PlayerConnectionCloseEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerConnectionCloseEvent", d, e);
+    }
+
+    // io.papermc.paper.event.connection.configuration.PlayerConnectionInitialConfigureEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerConnectionInitialConfigureEvent(io.papermc.paper.event.connection.configuration.PlayerConnectionInitialConfigureEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerConnectionInitialConfigureEvent", d, e);
+    }
+
+    // io.papermc.paper.event.connection.configuration.PlayerConnectionReconfigureEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerConnectionReconfigureEvent(io.papermc.paper.event.connection.configuration.PlayerConnectionReconfigureEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerConnectionReconfigureEvent", d, e);
+    }
+
+    // io.papermc.paper.event.connection.PlayerConnectionValidateLoginEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerConnectionValidateLoginEvent(io.papermc.paper.event.connection.PlayerConnectionValidateLoginEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerConnectionValidateLoginEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerDeepSleepEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerDeepSleepEvent(io.papermc.paper.event.player.PlayerDeepSleepEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerDeepSleepEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.player.PlayerElytraBoostEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerElytraBoostEvent(com.destroystokyo.paper.event.player.PlayerElytraBoostEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerElytraBoostEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerFailMoveEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerFailMoveEvent(io.papermc.paper.event.player.PlayerFailMoveEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerFailMoveEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerFlowerPotManipulateEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerFlowerPotManipulateEvent(io.papermc.paper.event.player.PlayerFlowerPotManipulateEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerFlowerPotManipulateEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.player.PlayerHandshakeEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerHandshakeEvent(com.destroystokyo.paper.event.player.PlayerHandshakeEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerHandshakeEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerInsertLecternBookEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerInsertLecternBookEvent(io.papermc.paper.event.player.PlayerInsertLecternBookEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerInsertLecternBookEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerInventorySlotChangeEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerInventorySlotChangeEvent(io.papermc.paper.event.player.PlayerInventorySlotChangeEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerInventorySlotChangeEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerItemCooldownEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerItemCooldownEvent(io.papermc.paper.event.player.PlayerItemCooldownEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerItemCooldownEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerItemFrameChangeEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerItemFrameChangeEvent(io.papermc.paper.event.player.PlayerItemFrameChangeEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerItemFrameChangeEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerItemGroupCooldownEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerItemGroupCooldownEvent(io.papermc.paper.event.player.PlayerItemGroupCooldownEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerItemGroupCooldownEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.player.PlayerJumpEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerJumpEvent(com.destroystokyo.paper.event.player.PlayerJumpEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerJumpEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.player.PlayerLaunchProjectileEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerLaunchProjectileEvent(com.destroystokyo.paper.event.player.PlayerLaunchProjectileEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerLaunchProjectileEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerLecternPageChangeEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerLecternPageChangeEvent(io.papermc.paper.event.player.PlayerLecternPageChangeEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerLecternPageChangeEvent", d, e);
+    }
+
+    // io.papermc.paper.event.connection.PlayerConnectionValidateLoginEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerConnectionValidateLoginEvent(io.papermc.paper.event.connection.PlayerConnectionValidateLoginEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerConnectionValidateLoginEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerLoomPatternSelectEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerLoomPatternSelectEvent(io.papermc.paper.event.player.PlayerLoomPatternSelectEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerLoomPatternSelectEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerMapFilledEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerMapFilledEvent(io.papermc.paper.event.player.PlayerMapFilledEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerMapFilledEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerNameEntityEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerNameEntityEvent(io.papermc.paper.event.player.PlayerNameEntityEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerNameEntityEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.PlayerNaturallySpawnCreaturesEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerNaturallySpawnCreaturesEvent(com.destroystokyo.paper.event.entity.PlayerNaturallySpawnCreaturesEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerNaturallySpawnCreaturesEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerOpenSignEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerOpenSignEvent(io.papermc.paper.event.player.PlayerOpenSignEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerOpenSignEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerOpenSignEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerOpenSignEvent(io.papermc.paper.event.player.PlayerOpenSignEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerOpenSignEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerPickBlockEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerPickBlockEvent(io.papermc.paper.event.player.PlayerPickBlockEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerPickBlockEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerPickEntityEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerPickEntityEvent(io.papermc.paper.event.player.PlayerPickEntityEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerPickEntityEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerPickItemEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerPickItemEvent(io.papermc.paper.event.player.PlayerPickItemEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerPickItemEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerPickBlockEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerPickBlockEvent(io.papermc.paper.event.player.PlayerPickBlockEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerPickBlockEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerPickEntityEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerPickEntityEvent(io.papermc.paper.event.player.PlayerPickEntityEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerPickEntityEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.player.PlayerPickupExperienceEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerPickupExperienceEvent(com.destroystokyo.paper.event.player.PlayerPickupExperienceEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerPickupExperienceEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.player.PlayerPostRespawnEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerPostRespawnEvent(com.destroystokyo.paper.event.player.PlayerPostRespawnEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerPostRespawnEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerPurchaseEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerPurchaseEvent(io.papermc.paper.event.player.PlayerPurchaseEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerPurchaseEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.player.PlayerReadyArrowEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerReadyArrowEvent(com.destroystokyo.paper.event.player.PlayerReadyArrowEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerReadyArrowEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerServerFullCheckEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerServerFullCheckEvent(io.papermc.paper.event.player.PlayerServerFullCheckEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerServerFullCheckEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.player.PlayerSetSpawnEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerSetSpawnEvent(com.destroystokyo.paper.event.player.PlayerSetSpawnEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerSetSpawnEvent", d, e);
+    }
+
+    // io.papermc.paper.event.block.PlayerShearBlockEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerShearBlockEvent(io.papermc.paper.event.block.PlayerShearBlockEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerShearBlockEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerShieldDisableEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerShieldDisableEvent(io.papermc.paper.event.player.PlayerShieldDisableEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerShieldDisableEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerSignCommandPreprocessEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerSignCommandPreprocessEvent(io.papermc.paper.event.player.PlayerSignCommandPreprocessEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerSignCommandPreprocessEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerOpenSignEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerOpenSignEvent(io.papermc.paper.event.player.PlayerOpenSignEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerOpenSignEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.player.PlayerSetSpawnEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerSetSpawnEvent(com.destroystokyo.paper.event.player.PlayerSetSpawnEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerSetSpawnEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.player.PlayerStartSpectatingEntityEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerStartSpectatingEntityEvent(com.destroystokyo.paper.event.player.PlayerStartSpectatingEntityEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerStartSpectatingEntityEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerStonecutterRecipeSelectEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerStonecutterRecipeSelectEvent(io.papermc.paper.event.player.PlayerStonecutterRecipeSelectEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerStonecutterRecipeSelectEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.player.PlayerStopSpectatingEntityEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerStopSpectatingEntityEvent(com.destroystokyo.paper.event.player.PlayerStopSpectatingEntityEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerStopSpectatingEntityEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerStopUsingItemEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerStopUsingItemEvent(io.papermc.paper.event.player.PlayerStopUsingItemEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerStopUsingItemEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.player.PlayerTeleportEndGatewayEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerTeleportEndGatewayEvent(com.destroystokyo.paper.event.player.PlayerTeleportEndGatewayEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerTeleportEndGatewayEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerTrackEntityEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerTrackEntityEvent(io.papermc.paper.event.player.PlayerTrackEntityEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerTrackEntityEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerTradeEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerTradeEvent(io.papermc.paper.event.player.PlayerTradeEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerTradeEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PlayerUntrackEntityEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerUntrackEntityEvent(io.papermc.paper.event.player.PlayerUntrackEntityEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerUntrackEntityEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.player.PlayerUseUnknownEntityEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPlayerUseUnknownEntityEvent(com.destroystokyo.paper.event.player.PlayerUseUnknownEntityEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PlayerUseUnknownEntityEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.PreCreatureSpawnEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPreCreatureSpawnEvent(com.destroystokyo.paper.event.entity.PreCreatureSpawnEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PreCreatureSpawnEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.profile.PreFillProfileEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPreFillProfileEvent(com.destroystokyo.paper.event.profile.PreFillProfileEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PreFillProfileEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.profile.PreLookupProfileEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPreLookupProfileEvent(com.destroystokyo.paper.event.profile.PreLookupProfileEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PreLookupProfileEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.inventory.PrepareResultEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPrepareResultEvent(com.destroystokyo.paper.event.inventory.PrepareResultEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PrepareResultEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.inventory.PrepareResultEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPrepareResultEvent(com.destroystokyo.paper.event.inventory.PrepareResultEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PrepareResultEvent", d, e);
+    }
+
+    // io.papermc.paper.event.player.PrePlayerAttackEntityEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPrePlayerAttackEntityEvent(io.papermc.paper.event.player.PrePlayerAttackEntityEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PrePlayerAttackEntityEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.PreSpawnerSpawnEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPreSpawnerSpawnEvent(com.destroystokyo.paper.event.entity.PreSpawnerSpawnEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PreSpawnerSpawnEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.profile.ProfileWhitelistVerifyEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onProfileWhitelistVerifyEvent(com.destroystokyo.paper.event.profile.ProfileWhitelistVerifyEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.ProfileWhitelistVerifyEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.ProjectileCollideEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onProjectileCollideEvent(com.destroystokyo.paper.event.entity.ProjectileCollideEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.ProjectileCollideEvent", d, e);
+    }
+
+    // io.papermc.paper.event.entity.PufferFishStateChangeEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onPufferFishStateChangeEvent(io.papermc.paper.event.entity.PufferFishStateChangeEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.PufferFishStateChangeEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.server.ServerExceptionEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onServerExceptionEvent(com.destroystokyo.paper.event.server.ServerExceptionEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.ServerExceptionEvent", d, e);
+    }
+
+    // io.papermc.paper.event.server.ServerResourcesReloadedEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onServerResourcesReloadedEvent(io.papermc.paper.event.server.ServerResourcesReloadedEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.ServerResourcesReloadedEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.server.ServerTickEndEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onServerTickEndEvent(com.destroystokyo.paper.event.server.ServerTickEndEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.ServerTickEndEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.server.ServerTickStartEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onServerTickStartEvent(com.destroystokyo.paper.event.server.ServerTickStartEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.ServerTickStartEvent", d, e);
+    }
+
+    // io.papermc.paper.event.entity.ShulkerDuplicateEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onShulkerDuplicateEvent(io.papermc.paper.event.entity.ShulkerDuplicateEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.ShulkerDuplicateEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.SkeletonHorseTrapEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onSkeletonHorseTrapEvent(com.destroystokyo.paper.event.entity.SkeletonHorseTrapEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.SkeletonHorseTrapEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.SlimeChangeDirectionEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onSlimeChangeDirectionEvent(com.destroystokyo.paper.event.entity.SlimeChangeDirectionEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.SlimeChangeDirectionEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.SlimePathfindEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onSlimePathfindEvent(com.destroystokyo.paper.event.entity.SlimePathfindEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.SlimePathfindEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.SlimeSwimEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onSlimeSwimEvent(com.destroystokyo.paper.event.entity.SlimeSwimEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.SlimeSwimEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.SlimeTargetLivingEntityEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onSlimeTargetLivingEntityEvent(com.destroystokyo.paper.event.entity.SlimeTargetLivingEntityEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.SlimeTargetLivingEntityEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.SlimeWanderEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onSlimeWanderEvent(com.destroystokyo.paper.event.entity.SlimeWanderEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.SlimeWanderEvent", d, e);
+    }
+
+    // io.papermc.paper.event.world.StructuresLocateEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onStructuresLocateEvent(io.papermc.paper.event.world.StructuresLocateEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.StructuresLocateEvent", d, e);
+    }
+
+    // io.papermc.paper.event.world.StructuresLocateEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onStructuresLocateEvent(io.papermc.paper.event.world.StructuresLocateEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.StructuresLocateEvent", d, e);
+    }
+
+    // io.papermc.paper.event.entity.TameableDeathMessageEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onTameableDeathMessageEvent(io.papermc.paper.event.entity.TameableDeathMessageEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.TameableDeathMessageEvent", d, e);
+    }
+
+    // io.papermc.paper.event.block.TargetHitEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onTargetHitEvent(io.papermc.paper.event.block.TargetHitEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.TargetHitEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.ThrownEggHatchEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onThrownEggHatchEvent(com.destroystokyo.paper.event.entity.ThrownEggHatchEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.ThrownEggHatchEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.TurtleGoHomeEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onTurtleGoHomeEvent(com.destroystokyo.paper.event.entity.TurtleGoHomeEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.TurtleGoHomeEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.TurtleLayEggEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onTurtleLayEggEvent(com.destroystokyo.paper.event.entity.TurtleLayEggEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.TurtleLayEggEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.TurtleStartDiggingEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onTurtleStartDiggingEvent(com.destroystokyo.paper.event.entity.TurtleStartDiggingEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.TurtleStartDiggingEvent", d, e);
+    }
+
+    // io.papermc.paper.event.packet.UncheckedSignChangeEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onUncheckedSignChangeEvent(io.papermc.paper.event.packet.UncheckedSignChangeEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.UncheckedSignChangeEvent", d, e);
+    }
+
+    // org.bukkit.event.command.UnknownCommandEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onUnknownCommandEvent(org.bukkit.event.command.UnknownCommandEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.UnknownCommandEvent", d, e);
+    }
+
+    // io.papermc.paper.event.block.VaultChangeStateEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onVaultChangeStateEvent(io.papermc.paper.event.block.VaultChangeStateEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.VaultChangeStateEvent", d, e);
+    }
+
+    // io.papermc.paper.event.entity.WardenAngerChangeEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onWardenAngerChangeEvent(io.papermc.paper.event.entity.WardenAngerChangeEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.WardenAngerChangeEvent", d, e);
+    }
+
+    // io.papermc.paper.event.entity.WaterBottleSplashEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onWaterBottleSplashEvent(io.papermc.paper.event.entity.WaterBottleSplashEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.WaterBottleSplashEvent", d, e);
+    }
+
+    // io.papermc.paper.event.server.WhitelistStateUpdateEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onWhitelistStateUpdateEvent(io.papermc.paper.event.server.WhitelistStateUpdateEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.WhitelistStateUpdateEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.server.WhitelistToggleEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onWhitelistToggleEvent(com.destroystokyo.paper.event.server.WhitelistToggleEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.WhitelistToggleEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.WitchConsumePotionEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onWitchConsumePotionEvent(com.destroystokyo.paper.event.entity.WitchConsumePotionEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.WitchConsumePotionEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.WitchReadyPotionEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onWitchReadyPotionEvent(com.destroystokyo.paper.event.entity.WitchReadyPotionEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.WitchReadyPotionEvent", d, e);
+    }
+
+    // com.destroystokyo.paper.event.entity.WitchThrowPotionEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onWitchThrowPotionEvent(com.destroystokyo.paper.event.entity.WitchThrowPotionEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.WitchThrowPotionEvent", d, e);
+    }
+
+    // io.papermc.paper.event.world.border.WorldBorderBoundsChangeEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onWorldBorderBoundsChangeEvent(io.papermc.paper.event.world.border.WorldBorderBoundsChangeEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.WorldBorderBoundsChangeEvent", d, e);
+    }
+
+    // io.papermc.paper.event.world.border.WorldBorderBoundsChangeFinishEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onWorldBorderBoundsChangeFinishEvent(io.papermc.paper.event.world.border.WorldBorderBoundsChangeFinishEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.WorldBorderBoundsChangeFinishEvent", d, e);
+    }
+
+    // io.papermc.paper.event.world.border.WorldBorderCenterChangeEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onWorldBorderCenterChangeEvent(io.papermc.paper.event.world.border.WorldBorderCenterChangeEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.WorldBorderCenterChangeEvent", d, e);
+    }
+
+    // io.papermc.paper.event.world.border.WorldBorderEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onWorldBorderEvent(io.papermc.paper.event.world.border.WorldBorderEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.WorldBorderEvent", d, e);
+    }
+
+    // io.papermc.paper.event.world.WorldDifficultyChangeEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onWorldDifficultyChangeEvent(io.papermc.paper.event.world.WorldDifficultyChangeEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.WorldDifficultyChangeEvent", d, e);
+    }
+
+    // io.papermc.paper.event.world.WorldGameRuleChangeEvent [Paper only]
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = false)
+    public void onWorldGameRuleChangeEvent(io.papermc.paper.event.world.WorldGameRuleChangeEvent e) {
+        if (!api.isPaper()) return;
+        Map<String, Object> d = new LinkedHashMap<>();
+        d.put("_api", "paper");
+        api.getDispatcher().dispatch("event.WorldGameRuleChangeEvent", d, e);
+    }
+
+}

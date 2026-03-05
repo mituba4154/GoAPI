@@ -1,0 +1,1830 @@
+{
+  "common": [
+    {
+      "name": "AreaEffectCloudApplyEvent",
+      "fqcn": "org.bukkit.event.entity.AreaEffectCloudApplyEvent"
+    },
+    {
+      "name": "ArrowBodyCountChangeEvent",
+      "fqcn": "org.bukkit.event.entity.ArrowBodyCountChangeEvent"
+    },
+    {
+      "name": "AsyncPlayerChatEvent",
+      "fqcn": "org.bukkit.event.player.AsyncPlayerChatEvent"
+    },
+    {
+      "name": "AsyncPlayerChatPreviewEvent",
+      "fqcn": "org.bukkit.event.player.AsyncPlayerChatPreviewEvent"
+    },
+    {
+      "name": "AsyncPlayerPreLoginEvent",
+      "fqcn": "org.bukkit.event.player.AsyncPlayerPreLoginEvent"
+    },
+    {
+      "name": "AsyncStructureGenerateEvent",
+      "fqcn": "org.bukkit.event.world.AsyncStructureGenerateEvent"
+    },
+    {
+      "name": "AsyncStructureSpawnEvent",
+      "fqcn": "org.bukkit.event.world.AsyncStructureSpawnEvent"
+    },
+    {
+      "name": "BatToggleSleepEvent",
+      "fqcn": "org.bukkit.event.entity.BatToggleSleepEvent"
+    },
+    {
+      "name": "BellResonateEvent",
+      "fqcn": "org.bukkit.event.block.BellResonateEvent"
+    },
+    {
+      "name": "BellRingEvent",
+      "fqcn": "org.bukkit.event.block.BellRingEvent"
+    },
+    {
+      "name": "BlockBreakEvent",
+      "fqcn": "org.bukkit.event.block.BlockBreakEvent"
+    },
+    {
+      "name": "BlockBrushEvent",
+      "fqcn": "org.bukkit.event.block.BlockBrushEvent"
+    },
+    {
+      "name": "BlockBurnEvent",
+      "fqcn": "org.bukkit.event.block.BlockBurnEvent"
+    },
+    {
+      "name": "BlockCanBuildEvent",
+      "fqcn": "org.bukkit.event.block.BlockCanBuildEvent"
+    },
+    {
+      "name": "BlockCookEvent",
+      "fqcn": "org.bukkit.event.block.BlockCookEvent"
+    },
+    {
+      "name": "BlockDamageAbortEvent",
+      "fqcn": "org.bukkit.event.block.BlockDamageAbortEvent"
+    },
+    {
+      "name": "BlockDamageEvent",
+      "fqcn": "org.bukkit.event.block.BlockDamageEvent"
+    },
+    {
+      "name": "BlockDispenseArmorEvent",
+      "fqcn": "org.bukkit.event.block.BlockDispenseArmorEvent"
+    },
+    {
+      "name": "BlockDispenseEvent",
+      "fqcn": "org.bukkit.event.block.BlockDispenseEvent"
+    },
+    {
+      "name": "BlockDispenseLootEvent",
+      "fqcn": "org.bukkit.event.block.BlockDispenseLootEvent"
+    },
+    {
+      "name": "BlockDropItemEvent",
+      "fqcn": "org.bukkit.event.block.BlockDropItemEvent"
+    },
+    {
+      "name": "BlockEvent",
+      "fqcn": "org.bukkit.event.block.BlockEvent"
+    },
+    {
+      "name": "BlockExpEvent",
+      "fqcn": "org.bukkit.event.block.BlockExpEvent"
+    },
+    {
+      "name": "BlockExplodeEvent",
+      "fqcn": "org.bukkit.event.block.BlockExplodeEvent"
+    },
+    {
+      "name": "BlockFadeEvent",
+      "fqcn": "org.bukkit.event.block.BlockFadeEvent"
+    },
+    {
+      "name": "BlockFertilizeEvent",
+      "fqcn": "org.bukkit.event.block.BlockFertilizeEvent"
+    },
+    {
+      "name": "BlockFormEvent",
+      "fqcn": "org.bukkit.event.block.BlockFormEvent"
+    },
+    {
+      "name": "BlockFromToEvent",
+      "fqcn": "org.bukkit.event.block.BlockFromToEvent"
+    },
+    {
+      "name": "BlockGrowEvent",
+      "fqcn": "org.bukkit.event.block.BlockGrowEvent"
+    },
+    {
+      "name": "BlockIgniteEvent",
+      "fqcn": "org.bukkit.event.block.BlockIgniteEvent"
+    },
+    {
+      "name": "BlockMultiPlaceEvent",
+      "fqcn": "org.bukkit.event.block.BlockMultiPlaceEvent"
+    },
+    {
+      "name": "BlockPhysicsEvent",
+      "fqcn": "org.bukkit.event.block.BlockPhysicsEvent"
+    },
+    {
+      "name": "BlockPistonEvent",
+      "fqcn": "org.bukkit.event.block.BlockPistonEvent"
+    },
+    {
+      "name": "BlockPistonExtendEvent",
+      "fqcn": "org.bukkit.event.block.BlockPistonExtendEvent"
+    },
+    {
+      "name": "BlockPistonRetractEvent",
+      "fqcn": "org.bukkit.event.block.BlockPistonRetractEvent"
+    },
+    {
+      "name": "BlockPlaceEvent",
+      "fqcn": "org.bukkit.event.block.BlockPlaceEvent"
+    },
+    {
+      "name": "BlockReceiveGameEvent",
+      "fqcn": "org.bukkit.event.block.BlockReceiveGameEvent"
+    },
+    {
+      "name": "BlockRedstoneEvent",
+      "fqcn": "org.bukkit.event.block.BlockRedstoneEvent"
+    },
+    {
+      "name": "BlockShearEntityEvent",
+      "fqcn": "org.bukkit.event.block.BlockShearEntityEvent"
+    },
+    {
+      "name": "BlockSpreadEvent",
+      "fqcn": "org.bukkit.event.block.BlockSpreadEvent"
+    },
+    {
+      "name": "BrewEvent",
+      "fqcn": "org.bukkit.event.inventory.BrewEvent"
+    },
+    {
+      "name": "BrewingStandFuelEvent",
+      "fqcn": "org.bukkit.event.inventory.BrewingStandFuelEvent"
+    },
+    {
+      "name": "BrewingStartEvent",
+      "fqcn": "org.bukkit.event.block.BrewingStartEvent"
+    },
+    {
+      "name": "BroadcastMessageEvent",
+      "fqcn": "org.bukkit.event.server.BroadcastMessageEvent"
+    },
+    {
+      "name": "CampfireStartEvent",
+      "fqcn": "org.bukkit.event.block.CampfireStartEvent"
+    },
+    {
+      "name": "CauldronLevelChangeEvent",
+      "fqcn": "org.bukkit.event.block.CauldronLevelChangeEvent"
+    },
+    {
+      "name": "ChunkEvent",
+      "fqcn": "org.bukkit.event.world.ChunkEvent"
+    },
+    {
+      "name": "ChunkLoadEvent",
+      "fqcn": "org.bukkit.event.world.ChunkLoadEvent"
+    },
+    {
+      "name": "ChunkPopulateEvent",
+      "fqcn": "org.bukkit.event.world.ChunkPopulateEvent"
+    },
+    {
+      "name": "ChunkUnloadEvent",
+      "fqcn": "org.bukkit.event.world.ChunkUnloadEvent"
+    },
+    {
+      "name": "CrafterCraftEvent",
+      "fqcn": "org.bukkit.event.block.CrafterCraftEvent"
+    },
+    {
+      "name": "CraftItemEvent",
+      "fqcn": "org.bukkit.event.inventory.CraftItemEvent"
+    },
+    {
+      "name": "CreatureSpawnEvent",
+      "fqcn": "org.bukkit.event.entity.CreatureSpawnEvent"
+    },
+    {
+      "name": "CreeperPowerEvent",
+      "fqcn": "org.bukkit.event.entity.CreeperPowerEvent"
+    },
+    {
+      "name": "EnchantItemEvent",
+      "fqcn": "org.bukkit.event.enchantment.EnchantItemEvent"
+    },
+    {
+      "name": "EnderDragonChangePhaseEvent",
+      "fqcn": "org.bukkit.event.entity.EnderDragonChangePhaseEvent"
+    },
+    {
+      "name": "EntitiesLoadEvent",
+      "fqcn": "org.bukkit.event.world.EntitiesLoadEvent"
+    },
+    {
+      "name": "EntitiesUnloadEvent",
+      "fqcn": "org.bukkit.event.world.EntitiesUnloadEvent"
+    },
+    {
+      "name": "EntityAirChangeEvent",
+      "fqcn": "org.bukkit.event.entity.EntityAirChangeEvent"
+    },
+    {
+      "name": "EntityBlockFormEvent",
+      "fqcn": "org.bukkit.event.block.EntityBlockFormEvent"
+    },
+    {
+      "name": "EntityBreakDoorEvent",
+      "fqcn": "org.bukkit.event.entity.EntityBreakDoorEvent"
+    },
+    {
+      "name": "EntityBreedEvent",
+      "fqcn": "org.bukkit.event.entity.EntityBreedEvent"
+    },
+    {
+      "name": "EntityChangeBlockEvent",
+      "fqcn": "org.bukkit.event.entity.EntityChangeBlockEvent"
+    },
+    {
+      "name": "EntityCombustByBlockEvent",
+      "fqcn": "org.bukkit.event.entity.EntityCombustByBlockEvent"
+    },
+    {
+      "name": "EntityCombustByEntityEvent",
+      "fqcn": "org.bukkit.event.entity.EntityCombustByEntityEvent"
+    },
+    {
+      "name": "EntityCombustEvent",
+      "fqcn": "org.bukkit.event.entity.EntityCombustEvent"
+    },
+    {
+      "name": "EntityCreatePortalEvent",
+      "fqcn": "org.bukkit.event.entity.EntityCreatePortalEvent"
+    },
+    {
+      "name": "PortalCreateEvent",
+      "fqcn": "org.bukkit.event.world.PortalCreateEvent"
+    },
+    {
+      "name": "EntityDamageByBlockEvent",
+      "fqcn": "org.bukkit.event.entity.EntityDamageByBlockEvent"
+    },
+    {
+      "name": "EntityDamageByEntityEvent",
+      "fqcn": "org.bukkit.event.entity.EntityDamageByEntityEvent"
+    },
+    {
+      "name": "EntityDamageEvent",
+      "fqcn": "org.bukkit.event.entity.EntityDamageEvent"
+    },
+    {
+      "name": "EntityDeathEvent",
+      "fqcn": "org.bukkit.event.entity.EntityDeathEvent"
+    },
+    {
+      "name": "EntityDismountEvent",
+      "fqcn": "org.bukkit.event.entity.EntityDismountEvent"
+    },
+    {
+      "name": "EntityDropItemEvent",
+      "fqcn": "org.bukkit.event.entity.EntityDropItemEvent"
+    },
+    {
+      "name": "EntityEnterBlockEvent",
+      "fqcn": "org.bukkit.event.entity.EntityEnterBlockEvent"
+    },
+    {
+      "name": "EntityEnterLoveModeEvent",
+      "fqcn": "org.bukkit.event.entity.EntityEnterLoveModeEvent"
+    },
+    {
+      "name": "EntityEvent",
+      "fqcn": "org.bukkit.event.entity.EntityEvent"
+    },
+    {
+      "name": "EntityExhaustionEvent",
+      "fqcn": "org.bukkit.event.entity.EntityExhaustionEvent"
+    },
+    {
+      "name": "EntityExplodeEvent",
+      "fqcn": "org.bukkit.event.entity.EntityExplodeEvent"
+    },
+    {
+      "name": "EntityInteractEvent",
+      "fqcn": "org.bukkit.event.entity.EntityInteractEvent"
+    },
+    {
+      "name": "EntityKnockbackByEntityEvent",
+      "fqcn": "org.bukkit.event.entity.EntityKnockbackByEntityEvent"
+    },
+    {
+      "name": "EntityKnockbackEvent",
+      "fqcn": "org.bukkit.event.entity.EntityKnockbackEvent"
+    },
+    {
+      "name": "EntityMountEvent",
+      "fqcn": "org.bukkit.event.entity.EntityMountEvent"
+    },
+    {
+      "name": "EntityPickupItemEvent",
+      "fqcn": "org.bukkit.event.entity.EntityPickupItemEvent"
+    },
+    {
+      "name": "EntityPlaceEvent",
+      "fqcn": "org.bukkit.event.entity.EntityPlaceEvent"
+    },
+    {
+      "name": "EntityPortalEnterEvent",
+      "fqcn": "org.bukkit.event.entity.EntityPortalEnterEvent"
+    },
+    {
+      "name": "EntityPortalEvent",
+      "fqcn": "org.bukkit.event.entity.EntityPortalEvent"
+    },
+    {
+      "name": "EntityPortalExitEvent",
+      "fqcn": "org.bukkit.event.entity.EntityPortalExitEvent"
+    },
+    {
+      "name": "EntityPoseChangeEvent",
+      "fqcn": "org.bukkit.event.entity.EntityPoseChangeEvent"
+    },
+    {
+      "name": "EntityPotionEffectEvent",
+      "fqcn": "org.bukkit.event.entity.EntityPotionEffectEvent"
+    },
+    {
+      "name": "EntityRegainHealthEvent",
+      "fqcn": "org.bukkit.event.entity.EntityRegainHealthEvent"
+    },
+    {
+      "name": "EntityRemoveEvent",
+      "fqcn": "org.bukkit.event.entity.EntityRemoveEvent"
+    },
+    {
+      "name": "EntityResurrectEvent",
+      "fqcn": "org.bukkit.event.entity.EntityResurrectEvent"
+    },
+    {
+      "name": "EntityShootBowEvent",
+      "fqcn": "org.bukkit.event.entity.EntityShootBowEvent"
+    },
+    {
+      "name": "EntitySpawnEvent",
+      "fqcn": "org.bukkit.event.entity.EntitySpawnEvent"
+    },
+    {
+      "name": "EntitySpellCastEvent",
+      "fqcn": "org.bukkit.event.entity.EntitySpellCastEvent"
+    },
+    {
+      "name": "EntityTameEvent",
+      "fqcn": "org.bukkit.event.entity.EntityTameEvent"
+    },
+    {
+      "name": "EntityTargetBlockEvent",
+      "fqcn": "org.bukkit.event.entity.EntityTargetBlockEvent"
+    },
+    {
+      "name": "EntityTargetEvent",
+      "fqcn": "org.bukkit.event.entity.EntityTargetEvent"
+    },
+    {
+      "name": "EntityTargetLivingEntityEvent",
+      "fqcn": "org.bukkit.event.entity.EntityTargetLivingEntityEvent"
+    },
+    {
+      "name": "EntityTeleportEvent",
+      "fqcn": "org.bukkit.event.entity.EntityTeleportEvent"
+    },
+    {
+      "name": "EntityToggleGlideEvent",
+      "fqcn": "org.bukkit.event.entity.EntityToggleGlideEvent"
+    },
+    {
+      "name": "EntityToggleSwimEvent",
+      "fqcn": "org.bukkit.event.entity.EntityToggleSwimEvent"
+    },
+    {
+      "name": "EntityTransformEvent",
+      "fqcn": "org.bukkit.event.entity.EntityTransformEvent"
+    },
+    {
+      "name": "EntityUnleashEvent",
+      "fqcn": "org.bukkit.event.entity.EntityUnleashEvent"
+    },
+    {
+      "name": "Event",
+      "fqcn": "org.bukkit.event.Event"
+    },
+    {
+      "name": "ExpBottleEvent",
+      "fqcn": "org.bukkit.event.entity.ExpBottleEvent"
+    },
+    {
+      "name": "ExplosionPrimeEvent",
+      "fqcn": "org.bukkit.event.entity.ExplosionPrimeEvent"
+    },
+    {
+      "name": "FireworkExplodeEvent",
+      "fqcn": "org.bukkit.event.entity.FireworkExplodeEvent"
+    },
+    {
+      "name": "FluidLevelChangeEvent",
+      "fqcn": "org.bukkit.event.block.FluidLevelChangeEvent"
+    },
+    {
+      "name": "FoodLevelChangeEvent",
+      "fqcn": "org.bukkit.event.entity.FoodLevelChangeEvent"
+    },
+    {
+      "name": "FurnaceBurnEvent",
+      "fqcn": "org.bukkit.event.inventory.FurnaceBurnEvent"
+    },
+    {
+      "name": "FurnaceExtractEvent",
+      "fqcn": "org.bukkit.event.inventory.FurnaceExtractEvent"
+    },
+    {
+      "name": "FurnaceSmeltEvent",
+      "fqcn": "org.bukkit.event.inventory.FurnaceSmeltEvent"
+    },
+    {
+      "name": "FurnaceStartSmeltEvent",
+      "fqcn": "org.bukkit.event.inventory.FurnaceStartSmeltEvent"
+    },
+    {
+      "name": "GenericGameEvent",
+      "fqcn": "org.bukkit.event.world.GenericGameEvent"
+    },
+    {
+      "name": "HangingBreakByEntityEvent",
+      "fqcn": "org.bukkit.event.hanging.HangingBreakByEntityEvent"
+    },
+    {
+      "name": "HangingBreakEvent",
+      "fqcn": "org.bukkit.event.hanging.HangingBreakEvent"
+    },
+    {
+      "name": "HangingEvent",
+      "fqcn": "org.bukkit.event.hanging.HangingEvent"
+    },
+    {
+      "name": "HangingPlaceEvent",
+      "fqcn": "org.bukkit.event.hanging.HangingPlaceEvent"
+    },
+    {
+      "name": "HopperInventorySearchEvent",
+      "fqcn": "org.bukkit.event.inventory.HopperInventorySearchEvent"
+    },
+    {
+      "name": "HorseJumpEvent",
+      "fqcn": "org.bukkit.event.entity.HorseJumpEvent"
+    },
+    {
+      "name": "InventoryBlockStartEvent",
+      "fqcn": "org.bukkit.event.block.InventoryBlockStartEvent"
+    },
+    {
+      "name": "FurnaceStartSmeltEvent",
+      "fqcn": "org.bukkit.event.inventory.FurnaceStartSmeltEvent"
+    },
+    {
+      "name": "BrewingStartEvent",
+      "fqcn": "org.bukkit.event.block.BrewingStartEvent"
+    },
+    {
+      "name": "CampfireStartEvent",
+      "fqcn": "org.bukkit.event.block.CampfireStartEvent"
+    },
+    {
+      "name": "InventoryClickEvent",
+      "fqcn": "org.bukkit.event.inventory.InventoryClickEvent"
+    },
+    {
+      "name": "InventoryCloseEvent",
+      "fqcn": "org.bukkit.event.inventory.InventoryCloseEvent"
+    },
+    {
+      "name": "InventoryCreativeEvent",
+      "fqcn": "org.bukkit.event.inventory.InventoryCreativeEvent"
+    },
+    {
+      "name": "InventoryDragEvent",
+      "fqcn": "org.bukkit.event.inventory.InventoryDragEvent"
+    },
+    {
+      "name": "InventoryEvent",
+      "fqcn": "org.bukkit.event.inventory.InventoryEvent"
+    },
+    {
+      "name": "InventoryInteractEvent",
+      "fqcn": "org.bukkit.event.inventory.InventoryInteractEvent"
+    },
+    {
+      "name": "InventoryMoveItemEvent",
+      "fqcn": "org.bukkit.event.inventory.InventoryMoveItemEvent"
+    },
+    {
+      "name": "InventoryOpenEvent",
+      "fqcn": "org.bukkit.event.inventory.InventoryOpenEvent"
+    },
+    {
+      "name": "InventoryPickupItemEvent",
+      "fqcn": "org.bukkit.event.inventory.InventoryPickupItemEvent"
+    },
+    {
+      "name": "ItemDespawnEvent",
+      "fqcn": "org.bukkit.event.entity.ItemDespawnEvent"
+    },
+    {
+      "name": "ItemMergeEvent",
+      "fqcn": "org.bukkit.event.entity.ItemMergeEvent"
+    },
+    {
+      "name": "ItemSpawnEvent",
+      "fqcn": "org.bukkit.event.entity.ItemSpawnEvent"
+    },
+    {
+      "name": "LeavesDecayEvent",
+      "fqcn": "org.bukkit.event.block.LeavesDecayEvent"
+    },
+    {
+      "name": "LightningStrikeEvent",
+      "fqcn": "org.bukkit.event.weather.LightningStrikeEvent"
+    },
+    {
+      "name": "LingeringPotionSplashEvent",
+      "fqcn": "org.bukkit.event.entity.LingeringPotionSplashEvent"
+    },
+    {
+      "name": "LootGenerateEvent",
+      "fqcn": "org.bukkit.event.world.LootGenerateEvent"
+    },
+    {
+      "name": "MapInitializeEvent",
+      "fqcn": "org.bukkit.event.server.MapInitializeEvent"
+    },
+    {
+      "name": "MoistureChangeEvent",
+      "fqcn": "org.bukkit.event.block.MoistureChangeEvent"
+    },
+    {
+      "name": "NotePlayEvent",
+      "fqcn": "org.bukkit.event.block.NotePlayEvent"
+    },
+    {
+      "name": "PiglinBarterEvent",
+      "fqcn": "org.bukkit.event.entity.PiglinBarterEvent"
+    },
+    {
+      "name": "PigZapEvent",
+      "fqcn": "org.bukkit.event.entity.PigZapEvent"
+    },
+    {
+      "name": "PigZombieAngerEvent",
+      "fqcn": "org.bukkit.event.entity.PigZombieAngerEvent"
+    },
+    {
+      "name": "PlayerAdvancementDoneEvent",
+      "fqcn": "org.bukkit.event.player.PlayerAdvancementDoneEvent"
+    },
+    {
+      "name": "PlayerAnimationEvent",
+      "fqcn": "org.bukkit.event.player.PlayerAnimationEvent"
+    },
+    {
+      "name": "PlayerArmorStandManipulateEvent",
+      "fqcn": "org.bukkit.event.player.PlayerArmorStandManipulateEvent"
+    },
+    {
+      "name": "PlayerBedEnterEvent",
+      "fqcn": "org.bukkit.event.player.PlayerBedEnterEvent"
+    },
+    {
+      "name": "PlayerBedLeaveEvent",
+      "fqcn": "org.bukkit.event.player.PlayerBedLeaveEvent"
+    },
+    {
+      "name": "PlayerBucketEmptyEvent",
+      "fqcn": "org.bukkit.event.player.PlayerBucketEmptyEvent"
+    },
+    {
+      "name": "PlayerBucketEntityEvent",
+      "fqcn": "org.bukkit.event.player.PlayerBucketEntityEvent"
+    },
+    {
+      "name": "PlayerBucketEvent",
+      "fqcn": "org.bukkit.event.player.PlayerBucketEvent"
+    },
+    {
+      "name": "PlayerBucketFillEvent",
+      "fqcn": "org.bukkit.event.player.PlayerBucketFillEvent"
+    },
+    {
+      "name": "PlayerBucketFishEvent",
+      "fqcn": "org.bukkit.event.player.PlayerBucketFishEvent"
+    },
+    {
+      "name": "PlayerBucketEntityEvent",
+      "fqcn": "org.bukkit.event.player.PlayerBucketEntityEvent"
+    },
+    {
+      "name": "PlayerChangedMainHandEvent",
+      "fqcn": "org.bukkit.event.player.PlayerChangedMainHandEvent"
+    },
+    {
+      "name": "PlayerChangedWorldEvent",
+      "fqcn": "org.bukkit.event.player.PlayerChangedWorldEvent"
+    },
+    {
+      "name": "PlayerChannelEvent",
+      "fqcn": "org.bukkit.event.player.PlayerChannelEvent"
+    },
+    {
+      "name": "PlayerChatEvent",
+      "fqcn": "org.bukkit.event.player.PlayerChatEvent"
+    },
+    {
+      "name": "AsyncPlayerChatEvent",
+      "fqcn": "org.bukkit.event.player.AsyncPlayerChatEvent"
+    },
+    {
+      "name": "PlayerChatTabCompleteEvent",
+      "fqcn": "org.bukkit.event.player.PlayerChatTabCompleteEvent"
+    },
+    {
+      "name": "PlayerCommandPreprocessEvent",
+      "fqcn": "org.bukkit.event.player.PlayerCommandPreprocessEvent"
+    },
+    {
+      "name": "PlayerCommandSendEvent",
+      "fqcn": "org.bukkit.event.player.PlayerCommandSendEvent"
+    },
+    {
+      "name": "PlayerCustomClickEvent",
+      "fqcn": "org.bukkit.event.player.PlayerCustomClickEvent"
+    },
+    {
+      "name": "PlayerDeathEvent",
+      "fqcn": "org.bukkit.event.entity.PlayerDeathEvent"
+    },
+    {
+      "name": "PlayerDropItemEvent",
+      "fqcn": "org.bukkit.event.player.PlayerDropItemEvent"
+    },
+    {
+      "name": "PlayerEditBookEvent",
+      "fqcn": "org.bukkit.event.player.PlayerEditBookEvent"
+    },
+    {
+      "name": "PlayerEggThrowEvent",
+      "fqcn": "org.bukkit.event.player.PlayerEggThrowEvent"
+    },
+    {
+      "name": "PlayerEvent",
+      "fqcn": "org.bukkit.event.player.PlayerEvent"
+    },
+    {
+      "name": "PlayerExpChangeEvent",
+      "fqcn": "org.bukkit.event.player.PlayerExpChangeEvent"
+    },
+    {
+      "name": "PlayerExpCooldownChangeEvent",
+      "fqcn": "org.bukkit.event.player.PlayerExpCooldownChangeEvent"
+    },
+    {
+      "name": "PlayerFishEvent",
+      "fqcn": "org.bukkit.event.player.PlayerFishEvent"
+    },
+    {
+      "name": "PlayerGameModeChangeEvent",
+      "fqcn": "org.bukkit.event.player.PlayerGameModeChangeEvent"
+    },
+    {
+      "name": "PlayerHarvestBlockEvent",
+      "fqcn": "org.bukkit.event.player.PlayerHarvestBlockEvent"
+    },
+    {
+      "name": "PlayerHideEntityEvent",
+      "fqcn": "org.bukkit.event.player.PlayerHideEntityEvent"
+    },
+    {
+      "name": "PlayerInputEvent",
+      "fqcn": "org.bukkit.event.player.PlayerInputEvent"
+    },
+    {
+      "name": "PlayerInteractAtEntityEvent",
+      "fqcn": "org.bukkit.event.player.PlayerInteractAtEntityEvent"
+    },
+    {
+      "name": "PlayerInteractEntityEvent",
+      "fqcn": "org.bukkit.event.player.PlayerInteractEntityEvent"
+    },
+    {
+      "name": "PlayerInteractEvent",
+      "fqcn": "org.bukkit.event.player.PlayerInteractEvent"
+    },
+    {
+      "name": "PlayerItemBreakEvent",
+      "fqcn": "org.bukkit.event.player.PlayerItemBreakEvent"
+    },
+    {
+      "name": "PlayerItemConsumeEvent",
+      "fqcn": "org.bukkit.event.player.PlayerItemConsumeEvent"
+    },
+    {
+      "name": "PlayerItemDamageEvent",
+      "fqcn": "org.bukkit.event.player.PlayerItemDamageEvent"
+    },
+    {
+      "name": "PlayerItemHeldEvent",
+      "fqcn": "org.bukkit.event.player.PlayerItemHeldEvent"
+    },
+    {
+      "name": "PlayerItemMendEvent",
+      "fqcn": "org.bukkit.event.player.PlayerItemMendEvent"
+    },
+    {
+      "name": "PlayerJoinEvent",
+      "fqcn": "org.bukkit.event.player.PlayerJoinEvent"
+    },
+    {
+      "name": "PlayerKickEvent",
+      "fqcn": "org.bukkit.event.player.PlayerKickEvent"
+    },
+    {
+      "name": "PlayerLeashEntityEvent",
+      "fqcn": "org.bukkit.event.entity.PlayerLeashEntityEvent"
+    },
+    {
+      "name": "PlayerLevelChangeEvent",
+      "fqcn": "org.bukkit.event.player.PlayerLevelChangeEvent"
+    },
+    {
+      "name": "PlayerLinksSendEvent",
+      "fqcn": "org.bukkit.event.player.PlayerLinksSendEvent"
+    },
+    {
+      "name": "PlayerLocaleChangeEvent",
+      "fqcn": "org.bukkit.event.player.PlayerLocaleChangeEvent"
+    },
+    {
+      "name": "PlayerLoginEvent",
+      "fqcn": "org.bukkit.event.player.PlayerLoginEvent"
+    },
+    {
+      "name": "PlayerMoveEvent",
+      "fqcn": "org.bukkit.event.player.PlayerMoveEvent"
+    },
+    {
+      "name": "PlayerPickupArrowEvent",
+      "fqcn": "org.bukkit.event.player.PlayerPickupArrowEvent"
+    },
+    {
+      "name": "PlayerPickupItemEvent",
+      "fqcn": "org.bukkit.event.player.PlayerPickupItemEvent"
+    },
+    {
+      "name": "EntityPickupItemEvent",
+      "fqcn": "org.bukkit.event.entity.EntityPickupItemEvent"
+    },
+    {
+      "name": "PlayerPortalEvent",
+      "fqcn": "org.bukkit.event.player.PlayerPortalEvent"
+    },
+    {
+      "name": "PlayerPreLoginEvent",
+      "fqcn": "org.bukkit.event.player.PlayerPreLoginEvent"
+    },
+    {
+      "name": "AsyncPlayerPreLoginEvent",
+      "fqcn": "org.bukkit.event.player.AsyncPlayerPreLoginEvent"
+    },
+    {
+      "name": "PlayerQuitEvent",
+      "fqcn": "org.bukkit.event.player.PlayerQuitEvent"
+    },
+    {
+      "name": "PlayerRecipeBookClickEvent",
+      "fqcn": "org.bukkit.event.player.PlayerRecipeBookClickEvent"
+    },
+    {
+      "name": "PlayerRecipeBookSettingsChangeEvent",
+      "fqcn": "org.bukkit.event.player.PlayerRecipeBookSettingsChangeEvent"
+    },
+    {
+      "name": "PlayerRecipeDiscoverEvent",
+      "fqcn": "org.bukkit.event.player.PlayerRecipeDiscoverEvent"
+    },
+    {
+      "name": "PlayerRegisterChannelEvent",
+      "fqcn": "org.bukkit.event.player.PlayerRegisterChannelEvent"
+    },
+    {
+      "name": "PlayerResourcePackStatusEvent",
+      "fqcn": "org.bukkit.event.player.PlayerResourcePackStatusEvent"
+    },
+    {
+      "name": "PlayerRespawnEvent",
+      "fqcn": "org.bukkit.event.player.PlayerRespawnEvent"
+    },
+    {
+      "name": "PlayerRiptideEvent",
+      "fqcn": "org.bukkit.event.player.PlayerRiptideEvent"
+    },
+    {
+      "name": "PlayerShearEntityEvent",
+      "fqcn": "org.bukkit.event.player.PlayerShearEntityEvent"
+    },
+    {
+      "name": "PlayerShowEntityEvent",
+      "fqcn": "org.bukkit.event.player.PlayerShowEntityEvent"
+    },
+    {
+      "name": "PlayerSignOpenEvent",
+      "fqcn": "org.bukkit.event.player.PlayerSignOpenEvent"
+    },
+    {
+      "name": "PlayerSpawnChangeEvent",
+      "fqcn": "org.bukkit.event.player.PlayerSpawnChangeEvent"
+    },
+    {
+      "name": "PlayerStatisticIncrementEvent",
+      "fqcn": "org.bukkit.event.player.PlayerStatisticIncrementEvent"
+    },
+    {
+      "name": "PlayerSwapHandItemsEvent",
+      "fqcn": "org.bukkit.event.player.PlayerSwapHandItemsEvent"
+    },
+    {
+      "name": "PlayerTakeLecternBookEvent",
+      "fqcn": "org.bukkit.event.player.PlayerTakeLecternBookEvent"
+    },
+    {
+      "name": "PlayerTeleportEvent",
+      "fqcn": "org.bukkit.event.player.PlayerTeleportEvent"
+    },
+    {
+      "name": "PlayerToggleFlightEvent",
+      "fqcn": "org.bukkit.event.player.PlayerToggleFlightEvent"
+    },
+    {
+      "name": "PlayerToggleSneakEvent",
+      "fqcn": "org.bukkit.event.player.PlayerToggleSneakEvent"
+    },
+    {
+      "name": "PlayerToggleSprintEvent",
+      "fqcn": "org.bukkit.event.player.PlayerToggleSprintEvent"
+    },
+    {
+      "name": "PlayerUnleashEntityEvent",
+      "fqcn": "org.bukkit.event.player.PlayerUnleashEntityEvent"
+    },
+    {
+      "name": "PlayerUnregisterChannelEvent",
+      "fqcn": "org.bukkit.event.player.PlayerUnregisterChannelEvent"
+    },
+    {
+      "name": "PlayerVelocityEvent",
+      "fqcn": "org.bukkit.event.player.PlayerVelocityEvent"
+    },
+    {
+      "name": "PluginDisableEvent",
+      "fqcn": "org.bukkit.event.server.PluginDisableEvent"
+    },
+    {
+      "name": "PluginEnableEvent",
+      "fqcn": "org.bukkit.event.server.PluginEnableEvent"
+    },
+    {
+      "name": "PluginEvent",
+      "fqcn": "org.bukkit.event.server.PluginEvent"
+    },
+    {
+      "name": "PortalCreateEvent",
+      "fqcn": "org.bukkit.event.world.PortalCreateEvent"
+    },
+    {
+      "name": "PotionSplashEvent",
+      "fqcn": "org.bukkit.event.entity.PotionSplashEvent"
+    },
+    {
+      "name": "PrepareAnvilEvent",
+      "fqcn": "org.bukkit.event.inventory.PrepareAnvilEvent"
+    },
+    {
+      "name": "PrepareGrindstoneEvent",
+      "fqcn": "org.bukkit.event.inventory.PrepareGrindstoneEvent"
+    },
+    {
+      "name": "PrepareInventoryResultEvent",
+      "fqcn": "org.bukkit.event.inventory.PrepareInventoryResultEvent"
+    },
+    {
+      "name": "PrepareItemCraftEvent",
+      "fqcn": "org.bukkit.event.inventory.PrepareItemCraftEvent"
+    },
+    {
+      "name": "PrepareItemEnchantEvent",
+      "fqcn": "org.bukkit.event.enchantment.PrepareItemEnchantEvent"
+    },
+    {
+      "name": "PrepareSmithingEvent",
+      "fqcn": "org.bukkit.event.inventory.PrepareSmithingEvent"
+    },
+    {
+      "name": "ProjectileHitEvent",
+      "fqcn": "org.bukkit.event.entity.ProjectileHitEvent"
+    },
+    {
+      "name": "ProjectileLaunchEvent",
+      "fqcn": "org.bukkit.event.entity.ProjectileLaunchEvent"
+    },
+    {
+      "name": "RaidEvent",
+      "fqcn": "org.bukkit.event.raid.RaidEvent"
+    },
+    {
+      "name": "RaidFinishEvent",
+      "fqcn": "org.bukkit.event.raid.RaidFinishEvent"
+    },
+    {
+      "name": "RaidSpawnWaveEvent",
+      "fqcn": "org.bukkit.event.raid.RaidSpawnWaveEvent"
+    },
+    {
+      "name": "RaidStopEvent",
+      "fqcn": "org.bukkit.event.raid.RaidStopEvent"
+    },
+    {
+      "name": "RaidTriggerEvent",
+      "fqcn": "org.bukkit.event.raid.RaidTriggerEvent"
+    },
+    {
+      "name": "RemoteServerCommandEvent",
+      "fqcn": "org.bukkit.event.server.RemoteServerCommandEvent"
+    },
+    {
+      "name": "SculkBloomEvent",
+      "fqcn": "org.bukkit.event.block.SculkBloomEvent"
+    },
+    {
+      "name": "ServerCommandEvent",
+      "fqcn": "org.bukkit.event.server.ServerCommandEvent"
+    },
+    {
+      "name": "ServerEvent",
+      "fqcn": "org.bukkit.event.server.ServerEvent"
+    },
+    {
+      "name": "ServerListPingEvent",
+      "fqcn": "org.bukkit.event.server.ServerListPingEvent"
+    },
+    {
+      "name": "ServerLoadEvent",
+      "fqcn": "org.bukkit.event.server.ServerLoadEvent"
+    },
+    {
+      "name": "ServiceEvent",
+      "fqcn": "org.bukkit.event.server.ServiceEvent"
+    },
+    {
+      "name": "ServiceRegisterEvent",
+      "fqcn": "org.bukkit.event.server.ServiceRegisterEvent"
+    },
+    {
+      "name": "ServiceUnregisterEvent",
+      "fqcn": "org.bukkit.event.server.ServiceUnregisterEvent"
+    },
+    {
+      "name": "SheepDyeWoolEvent",
+      "fqcn": "org.bukkit.event.entity.SheepDyeWoolEvent"
+    },
+    {
+      "name": "SheepRegrowWoolEvent",
+      "fqcn": "org.bukkit.event.entity.SheepRegrowWoolEvent"
+    },
+    {
+      "name": "SignChangeEvent",
+      "fqcn": "org.bukkit.event.block.SignChangeEvent"
+    },
+    {
+      "name": "SlimeSplitEvent",
+      "fqcn": "org.bukkit.event.entity.SlimeSplitEvent"
+    },
+    {
+      "name": "SmithItemEvent",
+      "fqcn": "org.bukkit.event.inventory.SmithItemEvent"
+    },
+    {
+      "name": "SpawnChangeEvent",
+      "fqcn": "org.bukkit.event.world.SpawnChangeEvent"
+    },
+    {
+      "name": "SpawnerSpawnEvent",
+      "fqcn": "org.bukkit.event.entity.SpawnerSpawnEvent"
+    },
+    {
+      "name": "SpongeAbsorbEvent",
+      "fqcn": "org.bukkit.event.block.SpongeAbsorbEvent"
+    },
+    {
+      "name": "StriderTemperatureChangeEvent",
+      "fqcn": "org.bukkit.event.entity.StriderTemperatureChangeEvent"
+    },
+    {
+      "name": "StructureGrowEvent",
+      "fqcn": "org.bukkit.event.world.StructureGrowEvent"
+    },
+    {
+      "name": "TabCompleteEvent",
+      "fqcn": "org.bukkit.event.server.TabCompleteEvent"
+    },
+    {
+      "name": "ThunderChangeEvent",
+      "fqcn": "org.bukkit.event.weather.ThunderChangeEvent"
+    },
+    {
+      "name": "TimeSkipEvent",
+      "fqcn": "org.bukkit.event.world.TimeSkipEvent"
+    },
+    {
+      "name": "TNTPrimeEvent",
+      "fqcn": "org.bukkit.event.block.TNTPrimeEvent"
+    },
+    {
+      "name": "TradeSelectEvent",
+      "fqcn": "org.bukkit.event.inventory.TradeSelectEvent"
+    },
+    {
+      "name": "TrialSpawnerSpawnEvent",
+      "fqcn": "org.bukkit.event.entity.TrialSpawnerSpawnEvent"
+    },
+    {
+      "name": "VaultDisplayItemEvent",
+      "fqcn": "org.bukkit.event.block.VaultDisplayItemEvent"
+    },
+    {
+      "name": "VehicleBlockCollisionEvent",
+      "fqcn": "org.bukkit.event.vehicle.VehicleBlockCollisionEvent"
+    },
+    {
+      "name": "VehicleCollisionEvent",
+      "fqcn": "org.bukkit.event.vehicle.VehicleCollisionEvent"
+    },
+    {
+      "name": "VehicleCreateEvent",
+      "fqcn": "org.bukkit.event.vehicle.VehicleCreateEvent"
+    },
+    {
+      "name": "VehicleDamageEvent",
+      "fqcn": "org.bukkit.event.vehicle.VehicleDamageEvent"
+    },
+    {
+      "name": "VehicleDestroyEvent",
+      "fqcn": "org.bukkit.event.vehicle.VehicleDestroyEvent"
+    },
+    {
+      "name": "VehicleEnterEvent",
+      "fqcn": "org.bukkit.event.vehicle.VehicleEnterEvent"
+    },
+    {
+      "name": "VehicleEntityCollisionEvent",
+      "fqcn": "org.bukkit.event.vehicle.VehicleEntityCollisionEvent"
+    },
+    {
+      "name": "VehicleEvent",
+      "fqcn": "org.bukkit.event.vehicle.VehicleEvent"
+    },
+    {
+      "name": "VehicleExitEvent",
+      "fqcn": "org.bukkit.event.vehicle.VehicleExitEvent"
+    },
+    {
+      "name": "VehicleMoveEvent",
+      "fqcn": "org.bukkit.event.vehicle.VehicleMoveEvent"
+    },
+    {
+      "name": "VehicleUpdateEvent",
+      "fqcn": "org.bukkit.event.vehicle.VehicleUpdateEvent"
+    },
+    {
+      "name": "VillagerAcquireTradeEvent",
+      "fqcn": "org.bukkit.event.entity.VillagerAcquireTradeEvent"
+    },
+    {
+      "name": "VillagerCareerChangeEvent",
+      "fqcn": "org.bukkit.event.entity.VillagerCareerChangeEvent"
+    },
+    {
+      "name": "VillagerReplenishTradeEvent",
+      "fqcn": "org.bukkit.event.entity.VillagerReplenishTradeEvent"
+    },
+    {
+      "name": "VillagerReputationChangeEvent",
+      "fqcn": "org.bukkit.event.entity.VillagerReputationChangeEvent"
+    },
+    {
+      "name": "WeatherChangeEvent",
+      "fqcn": "org.bukkit.event.weather.WeatherChangeEvent"
+    },
+    {
+      "name": "WeatherEvent",
+      "fqcn": "org.bukkit.event.weather.WeatherEvent"
+    },
+    {
+      "name": "WorldEvent",
+      "fqcn": "org.bukkit.event.world.WorldEvent"
+    },
+    {
+      "name": "WorldInitEvent",
+      "fqcn": "org.bukkit.event.world.WorldInitEvent"
+    },
+    {
+      "name": "WorldLoadEvent",
+      "fqcn": "org.bukkit.event.world.WorldLoadEvent"
+    },
+    {
+      "name": "WorldSaveEvent",
+      "fqcn": "org.bukkit.event.world.WorldSaveEvent"
+    },
+    {
+      "name": "WorldUnloadEvent",
+      "fqcn": "org.bukkit.event.world.WorldUnloadEvent"
+    }
+  ],
+  "paper_only": [
+    {
+      "name": "AnvilDamagedEvent",
+      "fqcn": "com.destroystokyo.paper.event.block.AnvilDamagedEvent"
+    },
+    {
+      "name": "AsyncChatCommandDecorateEvent",
+      "fqcn": "io.papermc.paper.event.player.AsyncChatCommandDecorateEvent"
+    },
+    {
+      "name": "AsyncChatDecorateEvent",
+      "fqcn": "io.papermc.paper.event.player.AsyncChatDecorateEvent"
+    },
+    {
+      "name": "AsyncChatEvent",
+      "fqcn": "io.papermc.paper.event.player.AsyncChatEvent"
+    },
+    {
+      "name": "AsyncChatEvent",
+      "fqcn": "io.papermc.paper.event.player.AsyncChatEvent"
+    },
+    {
+      "name": "AsyncPlayerConnectionConfigureEvent",
+      "fqcn": "io.papermc.paper.event.connection.configuration.AsyncPlayerConnectionConfigureEvent"
+    },
+    {
+      "name": "AsyncPlayerSendCommandsEvent",
+      "fqcn": "com.destroystokyo.paper.event.brigadier.AsyncPlayerSendCommandsEvent"
+    },
+    {
+      "name": "AsyncPlayerSendSuggestionsEvent",
+      "fqcn": "com.destroystokyo.paper.event.brigadier.AsyncPlayerSendSuggestionsEvent"
+    },
+    {
+      "name": "AsyncTabCompleteEvent",
+      "fqcn": "com.destroystokyo.paper.event.server.AsyncTabCompleteEvent"
+    },
+    {
+      "name": "BeaconActivatedEvent",
+      "fqcn": "io.papermc.paper.event.block.BeaconActivatedEvent"
+    },
+    {
+      "name": "BeaconDeactivatedEvent",
+      "fqcn": "io.papermc.paper.event.block.BeaconDeactivatedEvent"
+    },
+    {
+      "name": "BeaconEffectEvent",
+      "fqcn": "com.destroystokyo.paper.event.block.BeaconEffectEvent"
+    },
+    {
+      "name": "BellRevealRaiderEvent",
+      "fqcn": "io.papermc.paper.event.block.BellRevealRaiderEvent"
+    },
+    {
+      "name": "BlockBreakBlockEvent",
+      "fqcn": "io.papermc.paper.event.block.BlockBreakBlockEvent"
+    },
+    {
+      "name": "BlockBreakProgressUpdateEvent",
+      "fqcn": "io.papermc.paper.event.block.BlockBreakProgressUpdateEvent"
+    },
+    {
+      "name": "BlockDestroyEvent",
+      "fqcn": "com.destroystokyo.paper.event.block.BlockDestroyEvent"
+    },
+    {
+      "name": "BlockFailedDispenseEvent",
+      "fqcn": "io.papermc.paper.event.block.BlockFailedDispenseEvent"
+    },
+    {
+      "name": "BlockLockCheckEvent",
+      "fqcn": "io.papermc.paper.event.block.BlockLockCheckEvent"
+    },
+    {
+      "name": "BlockPreDispenseEvent",
+      "fqcn": "io.papermc.paper.event.block.BlockPreDispenseEvent"
+    },
+    {
+      "name": "CartographyItemEvent",
+      "fqcn": "io.papermc.paper.event.player.CartographyItemEvent"
+    },
+    {
+      "name": "ChatEvent",
+      "fqcn": "io.papermc.paper.event.player.ChatEvent"
+    },
+    {
+      "name": "ClientTickEndEvent",
+      "fqcn": "io.papermc.paper.event.packet.ClientTickEndEvent"
+    },
+    {
+      "name": "CommandRegisteredEvent",
+      "fqcn": "com.destroystokyo.paper.event.brigadier.CommandRegisteredEvent"
+    },
+    {
+      "name": "CompostItemEvent",
+      "fqcn": "io.papermc.paper.event.block.CompostItemEvent"
+    },
+    {
+      "name": "CreeperIgniteEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.CreeperIgniteEvent"
+    },
+    {
+      "name": "DragonEggFormEvent",
+      "fqcn": "io.papermc.paper.event.block.DragonEggFormEvent"
+    },
+    {
+      "name": "ElderGuardianAppearanceEvent",
+      "fqcn": "io.papermc.paper.event.entity.ElderGuardianAppearanceEvent"
+    },
+    {
+      "name": "EnderDragonFireballHitEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.EnderDragonFireballHitEvent"
+    },
+    {
+      "name": "EnderDragonFlameEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.EnderDragonFlameEvent"
+    },
+    {
+      "name": "EnderDragonShootFireballEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.EnderDragonShootFireballEvent"
+    },
+    {
+      "name": "EndermanAttackPlayerEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.EndermanAttackPlayerEvent"
+    },
+    {
+      "name": "EndermanEscapeEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.EndermanEscapeEvent"
+    },
+    {
+      "name": "EntityAddToWorldEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.EntityAddToWorldEvent"
+    },
+    {
+      "name": "EntityAttemptSmashAttackEvent",
+      "fqcn": "io.papermc.paper.event.entity.EntityAttemptSmashAttackEvent"
+    },
+    {
+      "name": "EntityAttemptSpinAttackEvent",
+      "fqcn": "io.papermc.paper.event.entity.EntityAttemptSpinAttackEvent"
+    },
+    {
+      "name": "EntityCompostItemEvent",
+      "fqcn": "io.papermc.paper.event.entity.EntityCompostItemEvent"
+    },
+    {
+      "name": "EntityDamageItemEvent",
+      "fqcn": "io.papermc.paper.event.entity.EntityDamageItemEvent"
+    },
+    {
+      "name": "EntityDyeEvent",
+      "fqcn": "io.papermc.paper.event.entity.EntityDyeEvent"
+    },
+    {
+      "name": "EntityEffectTickEvent",
+      "fqcn": "io.papermc.paper.event.entity.EntityEffectTickEvent"
+    },
+    {
+      "name": "EntityEquipmentChangedEvent",
+      "fqcn": "io.papermc.paper.event.entity.EntityEquipmentChangedEvent"
+    },
+    {
+      "name": "EntityFertilizeEggEvent",
+      "fqcn": "io.papermc.paper.event.entity.EntityFertilizeEggEvent"
+    },
+    {
+      "name": "EntityInsideBlockEvent",
+      "fqcn": "io.papermc.paper.event.entity.EntityInsideBlockEvent"
+    },
+    {
+      "name": "EntityJumpEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.EntityJumpEvent"
+    },
+    {
+      "name": "EntityLoadCrossbowEvent",
+      "fqcn": "io.papermc.paper.event.entity.EntityLoadCrossbowEvent"
+    },
+    {
+      "name": "EntityMoveEvent",
+      "fqcn": "io.papermc.paper.event.entity.EntityMoveEvent"
+    },
+    {
+      "name": "EntityPathfindEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.EntityPathfindEvent"
+    },
+    {
+      "name": "EntityPortalReadyEvent",
+      "fqcn": "io.papermc.paper.event.entity.EntityPortalReadyEvent"
+    },
+    {
+      "name": "EntityPushedByEntityAttackEvent",
+      "fqcn": "io.papermc.paper.event.entity.EntityPushedByEntityAttackEvent"
+    },
+    {
+      "name": "EntityRemoveFromWorldEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.EntityRemoveFromWorldEvent"
+    },
+    {
+      "name": "EntityTeleportEndGatewayEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.EntityTeleportEndGatewayEvent"
+    },
+    {
+      "name": "EntityToggleSitEvent",
+      "fqcn": "io.papermc.paper.event.entity.EntityToggleSitEvent"
+    },
+    {
+      "name": "EntityZapEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.EntityZapEvent"
+    },
+    {
+      "name": "ExperienceOrbMergeEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.ExperienceOrbMergeEvent"
+    },
+    {
+      "name": "FillProfileEvent",
+      "fqcn": "com.destroystokyo.paper.event.profile.FillProfileEvent"
+    },
+    {
+      "name": "FishHookStateChangeEvent",
+      "fqcn": "io.papermc.paper.event.entity.FishHookStateChangeEvent"
+    },
+    {
+      "name": "GS4QueryEvent",
+      "fqcn": "com.destroystokyo.paper.event.server.GS4QueryEvent"
+    },
+    {
+      "name": "IllegalPacketEvent",
+      "fqcn": "com.destroystokyo.paper.event.player.IllegalPacketEvent"
+    },
+    {
+      "name": "LookupProfileEvent",
+      "fqcn": "com.destroystokyo.paper.event.profile.LookupProfileEvent"
+    },
+    {
+      "name": "PaperServerListPingEvent",
+      "fqcn": "com.destroystokyo.paper.event.server.PaperServerListPingEvent"
+    },
+    {
+      "name": "PhantomPreSpawnEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.PhantomPreSpawnEvent"
+    },
+    {
+      "name": "PlayerAdvancementCriterionGrantEvent",
+      "fqcn": "com.destroystokyo.paper.event.player.PlayerAdvancementCriterionGrantEvent"
+    },
+    {
+      "name": "PlayerArmSwingEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerArmSwingEvent"
+    },
+    {
+      "name": "PlayerArmorChangeEvent",
+      "fqcn": "com.destroystokyo.paper.event.player.PlayerArmorChangeEvent"
+    },
+    {
+      "name": "PlayerArmSwingEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerArmSwingEvent"
+    },
+    {
+      "name": "PlayerAttackEntityCooldownResetEvent",
+      "fqcn": "com.destroystokyo.paper.event.player.PlayerAttackEntityCooldownResetEvent"
+    },
+    {
+      "name": "PlayerAttemptPickupItemEvent",
+      "fqcn": "org.bukkit.event.player.PlayerAttemptPickupItemEvent"
+    },
+    {
+      "name": "PlayerBedFailEnterEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerBedFailEnterEvent"
+    },
+    {
+      "name": "PlayerChangeBeaconEffectEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerChangeBeaconEffectEvent"
+    },
+    {
+      "name": "PlayerChunkLoadEvent",
+      "fqcn": "io.papermc.paper.event.packet.PlayerChunkLoadEvent"
+    },
+    {
+      "name": "PlayerChunkUnloadEvent",
+      "fqcn": "io.papermc.paper.event.packet.PlayerChunkUnloadEvent"
+    },
+    {
+      "name": "PlayerClientLoadedWorldEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerClientLoadedWorldEvent"
+    },
+    {
+      "name": "PlayerClientOptionsChangeEvent",
+      "fqcn": "com.destroystokyo.paper.event.player.PlayerClientOptionsChangeEvent"
+    },
+    {
+      "name": "PlayerConnectionCloseEvent",
+      "fqcn": "com.destroystokyo.paper.event.player.PlayerConnectionCloseEvent"
+    },
+    {
+      "name": "PlayerConnectionInitialConfigureEvent",
+      "fqcn": "io.papermc.paper.event.connection.configuration.PlayerConnectionInitialConfigureEvent"
+    },
+    {
+      "name": "PlayerConnectionReconfigureEvent",
+      "fqcn": "io.papermc.paper.event.connection.configuration.PlayerConnectionReconfigureEvent"
+    },
+    {
+      "name": "PlayerConnectionValidateLoginEvent",
+      "fqcn": "io.papermc.paper.event.connection.PlayerConnectionValidateLoginEvent"
+    },
+    {
+      "name": "PlayerDeepSleepEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerDeepSleepEvent"
+    },
+    {
+      "name": "PlayerElytraBoostEvent",
+      "fqcn": "com.destroystokyo.paper.event.player.PlayerElytraBoostEvent"
+    },
+    {
+      "name": "PlayerFailMoveEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerFailMoveEvent"
+    },
+    {
+      "name": "PlayerFlowerPotManipulateEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerFlowerPotManipulateEvent"
+    },
+    {
+      "name": "PlayerHandshakeEvent",
+      "fqcn": "com.destroystokyo.paper.event.player.PlayerHandshakeEvent"
+    },
+    {
+      "name": "PlayerInsertLecternBookEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerInsertLecternBookEvent"
+    },
+    {
+      "name": "PlayerInventorySlotChangeEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerInventorySlotChangeEvent"
+    },
+    {
+      "name": "PlayerItemCooldownEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerItemCooldownEvent"
+    },
+    {
+      "name": "PlayerItemFrameChangeEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerItemFrameChangeEvent"
+    },
+    {
+      "name": "PlayerItemGroupCooldownEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerItemGroupCooldownEvent"
+    },
+    {
+      "name": "PlayerJumpEvent",
+      "fqcn": "com.destroystokyo.paper.event.player.PlayerJumpEvent"
+    },
+    {
+      "name": "PlayerLaunchProjectileEvent",
+      "fqcn": "com.destroystokyo.paper.event.player.PlayerLaunchProjectileEvent"
+    },
+    {
+      "name": "PlayerLecternPageChangeEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerLecternPageChangeEvent"
+    },
+    {
+      "name": "PlayerConnectionValidateLoginEvent",
+      "fqcn": "io.papermc.paper.event.connection.PlayerConnectionValidateLoginEvent"
+    },
+    {
+      "name": "PlayerLoomPatternSelectEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerLoomPatternSelectEvent"
+    },
+    {
+      "name": "PlayerMapFilledEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerMapFilledEvent"
+    },
+    {
+      "name": "PlayerNameEntityEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerNameEntityEvent"
+    },
+    {
+      "name": "PlayerNaturallySpawnCreaturesEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.PlayerNaturallySpawnCreaturesEvent"
+    },
+    {
+      "name": "PlayerOpenSignEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerOpenSignEvent"
+    },
+    {
+      "name": "PlayerOpenSignEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerOpenSignEvent"
+    },
+    {
+      "name": "PlayerPickBlockEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerPickBlockEvent"
+    },
+    {
+      "name": "PlayerPickEntityEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerPickEntityEvent"
+    },
+    {
+      "name": "PlayerPickItemEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerPickItemEvent"
+    },
+    {
+      "name": "PlayerPickBlockEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerPickBlockEvent"
+    },
+    {
+      "name": "PlayerPickEntityEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerPickEntityEvent"
+    },
+    {
+      "name": "PlayerPickupExperienceEvent",
+      "fqcn": "com.destroystokyo.paper.event.player.PlayerPickupExperienceEvent"
+    },
+    {
+      "name": "PlayerPostRespawnEvent",
+      "fqcn": "com.destroystokyo.paper.event.player.PlayerPostRespawnEvent"
+    },
+    {
+      "name": "PlayerPurchaseEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerPurchaseEvent"
+    },
+    {
+      "name": "PlayerReadyArrowEvent",
+      "fqcn": "com.destroystokyo.paper.event.player.PlayerReadyArrowEvent"
+    },
+    {
+      "name": "PlayerServerFullCheckEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerServerFullCheckEvent"
+    },
+    {
+      "name": "PlayerSetSpawnEvent",
+      "fqcn": "com.destroystokyo.paper.event.player.PlayerSetSpawnEvent"
+    },
+    {
+      "name": "PlayerShearBlockEvent",
+      "fqcn": "io.papermc.paper.event.block.PlayerShearBlockEvent"
+    },
+    {
+      "name": "PlayerShieldDisableEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerShieldDisableEvent"
+    },
+    {
+      "name": "PlayerSignCommandPreprocessEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerSignCommandPreprocessEvent"
+    },
+    {
+      "name": "PlayerOpenSignEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerOpenSignEvent"
+    },
+    {
+      "name": "PlayerSetSpawnEvent",
+      "fqcn": "com.destroystokyo.paper.event.player.PlayerSetSpawnEvent"
+    },
+    {
+      "name": "PlayerStartSpectatingEntityEvent",
+      "fqcn": "com.destroystokyo.paper.event.player.PlayerStartSpectatingEntityEvent"
+    },
+    {
+      "name": "PlayerStonecutterRecipeSelectEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerStonecutterRecipeSelectEvent"
+    },
+    {
+      "name": "PlayerStopSpectatingEntityEvent",
+      "fqcn": "com.destroystokyo.paper.event.player.PlayerStopSpectatingEntityEvent"
+    },
+    {
+      "name": "PlayerStopUsingItemEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerStopUsingItemEvent"
+    },
+    {
+      "name": "PlayerTeleportEndGatewayEvent",
+      "fqcn": "com.destroystokyo.paper.event.player.PlayerTeleportEndGatewayEvent"
+    },
+    {
+      "name": "PlayerTrackEntityEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerTrackEntityEvent"
+    },
+    {
+      "name": "PlayerTradeEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerTradeEvent"
+    },
+    {
+      "name": "PlayerUntrackEntityEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerUntrackEntityEvent"
+    },
+    {
+      "name": "PlayerUseUnknownEntityEvent",
+      "fqcn": "com.destroystokyo.paper.event.player.PlayerUseUnknownEntityEvent"
+    },
+    {
+      "name": "PreCreatureSpawnEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.PreCreatureSpawnEvent"
+    },
+    {
+      "name": "PreFillProfileEvent",
+      "fqcn": "com.destroystokyo.paper.event.profile.PreFillProfileEvent"
+    },
+    {
+      "name": "PreLookupProfileEvent",
+      "fqcn": "com.destroystokyo.paper.event.profile.PreLookupProfileEvent"
+    },
+    {
+      "name": "PrepareResultEvent",
+      "fqcn": "com.destroystokyo.paper.event.inventory.PrepareResultEvent"
+    },
+    {
+      "name": "PrepareResultEvent",
+      "fqcn": "com.destroystokyo.paper.event.inventory.PrepareResultEvent"
+    },
+    {
+      "name": "PrePlayerAttackEntityEvent",
+      "fqcn": "io.papermc.paper.event.player.PrePlayerAttackEntityEvent"
+    },
+    {
+      "name": "PreSpawnerSpawnEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.PreSpawnerSpawnEvent"
+    },
+    {
+      "name": "ProfileWhitelistVerifyEvent",
+      "fqcn": "com.destroystokyo.paper.event.profile.ProfileWhitelistVerifyEvent"
+    },
+    {
+      "name": "ProjectileCollideEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.ProjectileCollideEvent"
+    },
+    {
+      "name": "PufferFishStateChangeEvent",
+      "fqcn": "io.papermc.paper.event.entity.PufferFishStateChangeEvent"
+    },
+    {
+      "name": "ServerExceptionEvent",
+      "fqcn": "com.destroystokyo.paper.event.server.ServerExceptionEvent"
+    },
+    {
+      "name": "ServerResourcesReloadedEvent",
+      "fqcn": "io.papermc.paper.event.server.ServerResourcesReloadedEvent"
+    },
+    {
+      "name": "ServerTickEndEvent",
+      "fqcn": "com.destroystokyo.paper.event.server.ServerTickEndEvent"
+    },
+    {
+      "name": "ServerTickStartEvent",
+      "fqcn": "com.destroystokyo.paper.event.server.ServerTickStartEvent"
+    },
+    {
+      "name": "ShulkerDuplicateEvent",
+      "fqcn": "io.papermc.paper.event.entity.ShulkerDuplicateEvent"
+    },
+    {
+      "name": "SkeletonHorseTrapEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.SkeletonHorseTrapEvent"
+    },
+    {
+      "name": "SlimeChangeDirectionEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.SlimeChangeDirectionEvent"
+    },
+    {
+      "name": "SlimePathfindEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.SlimePathfindEvent"
+    },
+    {
+      "name": "SlimeSwimEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.SlimeSwimEvent"
+    },
+    {
+      "name": "SlimeTargetLivingEntityEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.SlimeTargetLivingEntityEvent"
+    },
+    {
+      "name": "SlimeWanderEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.SlimeWanderEvent"
+    },
+    {
+      "name": "StructuresLocateEvent",
+      "fqcn": "io.papermc.paper.event.world.StructuresLocateEvent"
+    },
+    {
+      "name": "StructuresLocateEvent",
+      "fqcn": "io.papermc.paper.event.world.StructuresLocateEvent"
+    },
+    {
+      "name": "TameableDeathMessageEvent",
+      "fqcn": "io.papermc.paper.event.entity.TameableDeathMessageEvent"
+    },
+    {
+      "name": "TargetHitEvent",
+      "fqcn": "io.papermc.paper.event.block.TargetHitEvent"
+    },
+    {
+      "name": "ThrownEggHatchEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.ThrownEggHatchEvent"
+    },
+    {
+      "name": "TurtleGoHomeEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.TurtleGoHomeEvent"
+    },
+    {
+      "name": "TurtleLayEggEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.TurtleLayEggEvent"
+    },
+    {
+      "name": "TurtleStartDiggingEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.TurtleStartDiggingEvent"
+    },
+    {
+      "name": "UncheckedSignChangeEvent",
+      "fqcn": "io.papermc.paper.event.packet.UncheckedSignChangeEvent"
+    },
+    {
+      "name": "UnknownCommandEvent",
+      "fqcn": "org.bukkit.event.command.UnknownCommandEvent"
+    },
+    {
+      "name": "VaultChangeStateEvent",
+      "fqcn": "io.papermc.paper.event.block.VaultChangeStateEvent"
+    },
+    {
+      "name": "WardenAngerChangeEvent",
+      "fqcn": "io.papermc.paper.event.entity.WardenAngerChangeEvent"
+    },
+    {
+      "name": "WaterBottleSplashEvent",
+      "fqcn": "io.papermc.paper.event.entity.WaterBottleSplashEvent"
+    },
+    {
+      "name": "WhitelistStateUpdateEvent",
+      "fqcn": "io.papermc.paper.event.server.WhitelistStateUpdateEvent"
+    },
+    {
+      "name": "WhitelistToggleEvent",
+      "fqcn": "com.destroystokyo.paper.event.server.WhitelistToggleEvent"
+    },
+    {
+      "name": "WitchConsumePotionEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.WitchConsumePotionEvent"
+    },
+    {
+      "name": "WitchReadyPotionEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.WitchReadyPotionEvent"
+    },
+    {
+      "name": "WitchThrowPotionEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.WitchThrowPotionEvent"
+    },
+    {
+      "name": "WorldBorderBoundsChangeEvent",
+      "fqcn": "io.papermc.paper.event.world.border.WorldBorderBoundsChangeEvent"
+    },
+    {
+      "name": "WorldBorderBoundsChangeFinishEvent",
+      "fqcn": "io.papermc.paper.event.world.border.WorldBorderBoundsChangeFinishEvent"
+    },
+    {
+      "name": "WorldBorderCenterChangeEvent",
+      "fqcn": "io.papermc.paper.event.world.border.WorldBorderCenterChangeEvent"
+    },
+    {
+      "name": "WorldBorderEvent",
+      "fqcn": "io.papermc.paper.event.world.border.WorldBorderEvent"
+    },
+    {
+      "name": "WorldDifficultyChangeEvent",
+      "fqcn": "io.papermc.paper.event.world.WorldDifficultyChangeEvent"
+    },
+    {
+      "name": "WorldGameRuleChangeEvent",
+      "fqcn": "io.papermc.paper.event.world.WorldGameRuleChangeEvent"
+    }
+  ]
+}
