@@ -31,7 +31,7 @@ public class JsonRpcServer {
         try {
             server = HttpServer.create(new InetSocketAddress(port), 0);
             server.createContext("/rpc", this::handleRpc);
-            server.setExecutor(java.util.concurrent.Executors.newFixedThreadPool(4));
+            server.setExecutor(java.util.concurrent.Executors.newVirtualThreadPerTaskExecutor());
             server.start();
         } catch (IOException e) {
             throw new RuntimeException("Failed to start JsonRpcServer", e);
