@@ -45,10 +45,6 @@
       "fqcn": "org.bukkit.event.block.BlockBreakEvent"
     },
     {
-      "name": "BlockBrushEvent",
-      "fqcn": "org.bukkit.event.block.BlockBrushEvent"
-    },
-    {
       "name": "BlockBurnEvent",
       "fqcn": "org.bukkit.event.block.BlockBurnEvent"
     },
@@ -389,10 +385,6 @@
       "fqcn": "org.bukkit.event.entity.EntityTameEvent"
     },
     {
-      "name": "EntityTargetBlockEvent",
-      "fqcn": "org.bukkit.event.entity.EntityTargetBlockEvent"
-    },
-    {
       "name": "EntityTargetEvent",
       "fqcn": "org.bukkit.event.entity.EntityTargetEvent"
     },
@@ -491,18 +483,6 @@
     {
       "name": "InventoryBlockStartEvent",
       "fqcn": "org.bukkit.event.block.InventoryBlockStartEvent"
-    },
-    {
-      "name": "FurnaceStartSmeltEvent",
-      "fqcn": "org.bukkit.event.inventory.FurnaceStartSmeltEvent"
-    },
-    {
-      "name": "BrewingStartEvent",
-      "fqcn": "org.bukkit.event.block.BrewingStartEvent"
-    },
-    {
-      "name": "CampfireStartEvent",
-      "fqcn": "org.bukkit.event.block.CampfireStartEvent"
     },
     {
       "name": "InventoryClickEvent",
@@ -633,10 +613,6 @@
       "fqcn": "org.bukkit.event.player.PlayerBucketFishEvent"
     },
     {
-      "name": "PlayerBucketEntityEvent",
-      "fqcn": "org.bukkit.event.player.PlayerBucketEntityEvent"
-    },
-    {
       "name": "PlayerChangedMainHandEvent",
       "fqcn": "org.bukkit.event.player.PlayerChangedMainHandEvent"
     },
@@ -653,10 +629,6 @@
       "fqcn": "org.bukkit.event.player.PlayerChatEvent"
     },
     {
-      "name": "AsyncPlayerChatEvent",
-      "fqcn": "org.bukkit.event.player.AsyncPlayerChatEvent"
-    },
-    {
       "name": "PlayerChatTabCompleteEvent",
       "fqcn": "org.bukkit.event.player.PlayerChatTabCompleteEvent"
     },
@@ -667,10 +639,6 @@
     {
       "name": "PlayerCommandSendEvent",
       "fqcn": "org.bukkit.event.player.PlayerCommandSendEvent"
-    },
-    {
-      "name": "PlayerCustomClickEvent",
-      "fqcn": "org.bukkit.event.player.PlayerCustomClickEvent"
     },
     {
       "name": "PlayerDeathEvent",
@@ -793,20 +761,12 @@
       "fqcn": "org.bukkit.event.player.PlayerPickupItemEvent"
     },
     {
-      "name": "EntityPickupItemEvent",
-      "fqcn": "org.bukkit.event.entity.EntityPickupItemEvent"
-    },
-    {
       "name": "PlayerPortalEvent",
       "fqcn": "org.bukkit.event.player.PlayerPortalEvent"
     },
     {
       "name": "PlayerPreLoginEvent",
       "fqcn": "org.bukkit.event.player.PlayerPreLoginEvent"
-    },
-    {
-      "name": "AsyncPlayerPreLoginEvent",
-      "fqcn": "org.bukkit.event.player.AsyncPlayerPreLoginEvent"
     },
     {
       "name": "PlayerQuitEvent",
@@ -907,10 +867,6 @@
     {
       "name": "PluginEvent",
       "fqcn": "org.bukkit.event.server.PluginEvent"
-    },
-    {
-      "name": "PortalCreateEvent",
-      "fqcn": "org.bukkit.event.world.PortalCreateEvent"
     },
     {
       "name": "PotionSplashEvent",
@@ -1129,10 +1085,6 @@
       "fqcn": "org.bukkit.event.entity.VillagerReplenishTradeEvent"
     },
     {
-      "name": "VillagerReputationChangeEvent",
-      "fqcn": "org.bukkit.event.entity.VillagerReputationChangeEvent"
-    },
-    {
       "name": "WeatherChangeEvent",
       "fqcn": "org.bukkit.event.weather.WeatherChangeEvent"
     },
@@ -1179,10 +1131,6 @@
       "fqcn": "io.papermc.paper.event.player.AsyncChatEvent"
     },
     {
-      "name": "AsyncChatEvent",
-      "fqcn": "io.papermc.paper.event.player.AsyncChatEvent"
-    },
-    {
       "name": "AsyncPlayerConnectionConfigureEvent",
       "fqcn": "io.papermc.paper.event.connection.configuration.AsyncPlayerConnectionConfigureEvent"
     },
@@ -1213,6 +1161,10 @@
     {
       "name": "BellRevealRaiderEvent",
       "fqcn": "io.papermc.paper.event.block.BellRevealRaiderEvent"
+    },
+    {
+      "name": "BellRingEvent",
+      "fqcn": "io.papermc.paper.event.block.BellRingEvent"
     },
     {
       "name": "BlockBreakBlockEvent",
@@ -1335,6 +1287,14 @@
       "fqcn": "com.destroystokyo.paper.event.entity.EntityJumpEvent"
     },
     {
+      "name": "EntityKnockbackByEntityEvent",
+      "fqcn": "com.destroystokyo.paper.event.entity.EntityKnockbackByEntityEvent"
+    },
+    {
+      "name": "EntityKnockbackEvent",
+      "fqcn": "io.papermc.paper.event.entity.EntityKnockbackEvent"
+    },
+    {
       "name": "EntityLoadCrossbowEvent",
       "fqcn": "io.papermc.paper.event.entity.EntityLoadCrossbowEvent"
     },
@@ -1415,10 +1375,6 @@
       "fqcn": "com.destroystokyo.paper.event.player.PlayerArmorChangeEvent"
     },
     {
-      "name": "PlayerArmSwingEvent",
-      "fqcn": "io.papermc.paper.event.player.PlayerArmSwingEvent"
-    },
-    {
       "name": "PlayerAttackEntityCooldownResetEvent",
       "fqcn": "com.destroystokyo.paper.event.player.PlayerAttackEntityCooldownResetEvent"
     },
@@ -1465,6 +1421,10 @@
     {
       "name": "PlayerConnectionValidateLoginEvent",
       "fqcn": "io.papermc.paper.event.connection.PlayerConnectionValidateLoginEvent"
+    },
+    {
+      "name": "PlayerCustomClickEvent",
+      "fqcn": "io.papermc.paper.event.player.PlayerCustomClickEvent"
     },
     {
       "name": "PlayerDeepSleepEvent",
@@ -1519,10 +1479,6 @@
       "fqcn": "io.papermc.paper.event.player.PlayerLecternPageChangeEvent"
     },
     {
-      "name": "PlayerConnectionValidateLoginEvent",
-      "fqcn": "io.papermc.paper.event.connection.PlayerConnectionValidateLoginEvent"
-    },
-    {
       "name": "PlayerLoomPatternSelectEvent",
       "fqcn": "io.papermc.paper.event.player.PlayerLoomPatternSelectEvent"
     },
@@ -1543,10 +1499,6 @@
       "fqcn": "io.papermc.paper.event.player.PlayerOpenSignEvent"
     },
     {
-      "name": "PlayerOpenSignEvent",
-      "fqcn": "io.papermc.paper.event.player.PlayerOpenSignEvent"
-    },
-    {
       "name": "PlayerPickBlockEvent",
       "fqcn": "io.papermc.paper.event.player.PlayerPickBlockEvent"
     },
@@ -1557,14 +1509,6 @@
     {
       "name": "PlayerPickItemEvent",
       "fqcn": "io.papermc.paper.event.player.PlayerPickItemEvent"
-    },
-    {
-      "name": "PlayerPickBlockEvent",
-      "fqcn": "io.papermc.paper.event.player.PlayerPickBlockEvent"
-    },
-    {
-      "name": "PlayerPickEntityEvent",
-      "fqcn": "io.papermc.paper.event.player.PlayerPickEntityEvent"
     },
     {
       "name": "PlayerPickupExperienceEvent",
@@ -1581,6 +1525,10 @@
     {
       "name": "PlayerReadyArrowEvent",
       "fqcn": "com.destroystokyo.paper.event.player.PlayerReadyArrowEvent"
+    },
+    {
+      "name": "PlayerRecipeBookClickEvent",
+      "fqcn": "com.destroystokyo.paper.event.player.PlayerRecipeBookClickEvent"
     },
     {
       "name": "PlayerServerFullCheckEvent",
@@ -1601,14 +1549,6 @@
     {
       "name": "PlayerSignCommandPreprocessEvent",
       "fqcn": "io.papermc.paper.event.player.PlayerSignCommandPreprocessEvent"
-    },
-    {
-      "name": "PlayerOpenSignEvent",
-      "fqcn": "io.papermc.paper.event.player.PlayerOpenSignEvent"
-    },
-    {
-      "name": "PlayerSetSpawnEvent",
-      "fqcn": "com.destroystokyo.paper.event.player.PlayerSetSpawnEvent"
     },
     {
       "name": "PlayerStartSpectatingEntityEvent",
@@ -1659,8 +1599,8 @@
       "fqcn": "com.destroystokyo.paper.event.profile.PreLookupProfileEvent"
     },
     {
-      "name": "PrepareResultEvent",
-      "fqcn": "com.destroystokyo.paper.event.inventory.PrepareResultEvent"
+      "name": "PrepareGrindstoneEvent",
+      "fqcn": "com.destroystokyo.paper.event.inventory.PrepareGrindstoneEvent"
     },
     {
       "name": "PrepareResultEvent",
@@ -1735,10 +1675,6 @@
       "fqcn": "io.papermc.paper.event.world.StructuresLocateEvent"
     },
     {
-      "name": "StructuresLocateEvent",
-      "fqcn": "io.papermc.paper.event.world.StructuresLocateEvent"
-    },
-    {
       "name": "TameableDeathMessageEvent",
       "fqcn": "io.papermc.paper.event.entity.TameableDeathMessageEvent"
     },
@@ -1749,6 +1685,10 @@
     {
       "name": "ThrownEggHatchEvent",
       "fqcn": "com.destroystokyo.paper.event.entity.ThrownEggHatchEvent"
+    },
+    {
+      "name": "TNTPrimeEvent",
+      "fqcn": "com.destroystokyo.paper.event.block.TNTPrimeEvent"
     },
     {
       "name": "TurtleGoHomeEvent",
