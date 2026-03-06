@@ -26,6 +26,11 @@ PAPER_ONLY_PKGS = [
     "io.papermc.paper.event",
 ]
 EVENT_PKGS = ["org.bukkit.event"] + PAPER_ONLY_PKGS
+FQCN_PRIORITY = [
+    "io.papermc.paper.event",
+    "com.destroystokyo.paper.event",
+    "org.bukkit.event",
+]
 
 def fetch(url):
     CACHE_DIR.mkdir(exist_ok=True)
@@ -80,9 +85,38 @@ def is_event(e):
 def is_paper_only(fqcn):
     return any(fqcn.startswith(p) for p in PAPER_ONLY_PKGS)
 
+def priority_of(fqcn):
+    for i, p in enumerate(FQCN_PRIORITY):
+        if fqcn.startswith(p):
+            return i
+    return len(FQCN_PRIORITY)
+
+def dedupe_by_fqcn(entries):
+    seen = set()
+    out = []
+    for e in entries:
+        fqcn = e["fqcn"]
+        if fqcn in seen:
+            continue
+        seen.add(fqcn)
+        out.append(e)
+    return out
+
+def dedupe_by_name(entries):
+    order = []
+    picked = {}
+    for e in entries:
+        name = e["name"]
+        if name not in picked:
+            order.append(name)
+            picked[name] = e
+            continue
+        cur = picked[name]
+        if (priority_of(e["fqcn"]), e["fqcn"]) < (priority_of(cur["fqcn"]), cur["fqcn"]):
+            picked[name] = e
+    return [picked[name] for name in order]
+
 def gen_java(common, paper_only):
-    bukkit_imports = "\n".join(f"import {e['fqcn']};" for e in common)
-    paper_imports  = "\n".join(f"import {e['fqcn']};" for e in paper_only)
     total = len(common) + len(paper_only)
 
     lines = [
@@ -92,10 +126,7 @@ def gen_java(common, paper_only):
         "import org.bukkit.event.EventHandler;",
         "import org.bukkit.event.EventPriority;",
         "import org.bukkit.event.Listener;",
-        "// Bukkit/Spigot common events",
-        bukkit_imports,
-        "// Paper-only events",
-        paper_imports,
+        "// Event classes are referenced by FQCN in handler signatures.",
         "import java.util.LinkedHashMap;",
         "import java.util.Map;",
         "",
@@ -160,12 +191,14 @@ def main():
         html = fetch(f"{cfg['base']}/allclasses-index.html")
         p = ClassIndexParser()
         p.feed(html)
-        entries[key] = [e for e in p.entries if is_event(e)]
+        entries[key] = dedupe_by_fqcn([e for e in p.entries if is_event(e)])
         print(f"  events found: {len(entries[key])}")
 
-    spigot_names = {e["name"] for e in entries["spigot"]}
-    common     = list(entries["spigot"])
-    paper_only = [e for e in entries["paper"] if e["name"] not in spigot_names]
+    paper_fqcn = {e["fqcn"] for e in entries["paper"]}
+    spigot_fqcn = {e["fqcn"] for e in entries["spigot"]}
+    # Compile target is Paper API. "common" must be the intersection.
+    common = dedupe_by_name([e for e in entries["spigot"] if e["fqcn"] in paper_fqcn])
+    paper_only = dedupe_by_name([e for e in entries["paper"] if e["fqcn"] not in spigot_fqcn])
 
     print(f"\n=== Classification ===")
     print(f"  Bukkit/Spigot common : {len(common)}")
