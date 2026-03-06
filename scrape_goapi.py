@@ -31,6 +31,29 @@ FQCN_PRIORITY = [
     "com.destroystokyo.paper.event",
     "org.bukkit.event",
 ]
+ABSTRACT_BASE_EVENT_NAMES = {
+    "Event",
+    "BlockEvent",
+    "EntityEvent",
+    "HangingEvent",
+    "InventoryEvent",
+    "InventoryInteractEvent",
+    "PlayerEvent",
+    "PluginEvent",
+    "ServerEvent",
+    "ServiceEvent",
+    "VehicleCollisionEvent",
+    "VehicleEvent",
+    "WorldEvent",
+}
+HIGH_FREQUENCY_EVENT_NAMES = {
+    "PlayerMoveEvent",
+    "BlockPhysicsEvent",
+    "BlockRedstoneEvent",
+    "EntityMoveEvent",
+    "ClientTickEndEvent",
+}
+EXCLUDED_EVENT_NAMES = ABSTRACT_BASE_EVENT_NAMES | HIGH_FREQUENCY_EVENT_NAMES
 
 def fetch(url):
     CACHE_DIR.mkdir(exist_ok=True)
@@ -80,6 +103,7 @@ def is_event(e):
         any(e["fqcn"].startswith(p) for p in EVENT_PKGS)
         and e["name"].endswith("Event")
         and not e["name"].startswith("Abstract")
+        and e["name"] not in EXCLUDED_EVENT_NAMES
     )
 
 def is_paper_only(fqcn):
@@ -191,8 +215,14 @@ def main():
         html = fetch(f"{cfg['base']}/allclasses-index.html")
         p = ClassIndexParser()
         p.feed(html)
-        entries[key] = dedupe_by_fqcn([e for e in p.entries if is_event(e)])
-        print(f"  events found: {len(entries[key])}")
+        all_events = dedupe_by_fqcn([e for e in p.entries if (
+            any(e["fqcn"].startswith(pfx) for pfx in EVENT_PKGS)
+            and e["name"].endswith("Event")
+            and not e["name"].startswith("Abstract")
+        )])
+        entries[key] = [e for e in all_events if is_event(e)]
+        excluded = len(all_events) - len(entries[key])
+        print(f"  events found: {len(entries[key])} (excluded: {excluded})")
 
     paper_fqcn = {e["fqcn"] for e in entries["paper"]}
     spigot_fqcn = {e["fqcn"] for e in entries["spigot"]}
