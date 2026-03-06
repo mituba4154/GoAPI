@@ -81,10 +81,6 @@
       "fqcn": "org.bukkit.event.block.BlockDropItemEvent"
     },
     {
-      "name": "BlockEvent",
-      "fqcn": "org.bukkit.event.block.BlockEvent"
-    },
-    {
       "name": "BlockExpEvent",
       "fqcn": "org.bukkit.event.block.BlockExpEvent"
     },
@@ -121,10 +117,6 @@
       "fqcn": "org.bukkit.event.block.BlockMultiPlaceEvent"
     },
     {
-      "name": "BlockPhysicsEvent",
-      "fqcn": "org.bukkit.event.block.BlockPhysicsEvent"
-    },
-    {
       "name": "BlockPistonEvent",
       "fqcn": "org.bukkit.event.block.BlockPistonEvent"
     },
@@ -143,10 +135,6 @@
     {
       "name": "BlockReceiveGameEvent",
       "fqcn": "org.bukkit.event.block.BlockReceiveGameEvent"
-    },
-    {
-      "name": "BlockRedstoneEvent",
-      "fqcn": "org.bukkit.event.block.BlockRedstoneEvent"
     },
     {
       "name": "BlockShearEntityEvent",
@@ -301,10 +289,6 @@
       "fqcn": "org.bukkit.event.entity.EntityEnterLoveModeEvent"
     },
     {
-      "name": "EntityEvent",
-      "fqcn": "org.bukkit.event.entity.EntityEvent"
-    },
-    {
       "name": "EntityExhaustionEvent",
       "fqcn": "org.bukkit.event.entity.EntityExhaustionEvent"
     },
@@ -413,10 +397,6 @@
       "fqcn": "org.bukkit.event.entity.EntityUnleashEvent"
     },
     {
-      "name": "Event",
-      "fqcn": "org.bukkit.event.Event"
-    },
-    {
       "name": "ExpBottleEvent",
       "fqcn": "org.bukkit.event.entity.ExpBottleEvent"
     },
@@ -465,10 +445,6 @@
       "fqcn": "org.bukkit.event.hanging.HangingBreakEvent"
     },
     {
-      "name": "HangingEvent",
-      "fqcn": "org.bukkit.event.hanging.HangingEvent"
-    },
-    {
       "name": "HangingPlaceEvent",
       "fqcn": "org.bukkit.event.hanging.HangingPlaceEvent"
     },
@@ -499,14 +475,6 @@
     {
       "name": "InventoryDragEvent",
       "fqcn": "org.bukkit.event.inventory.InventoryDragEvent"
-    },
-    {
-      "name": "InventoryEvent",
-      "fqcn": "org.bukkit.event.inventory.InventoryEvent"
-    },
-    {
-      "name": "InventoryInteractEvent",
-      "fqcn": "org.bukkit.event.inventory.InventoryInteractEvent"
     },
     {
       "name": "InventoryMoveItemEvent",
@@ -657,10 +625,6 @@
       "fqcn": "org.bukkit.event.player.PlayerEggThrowEvent"
     },
     {
-      "name": "PlayerEvent",
-      "fqcn": "org.bukkit.event.player.PlayerEvent"
-    },
-    {
       "name": "PlayerExpChangeEvent",
       "fqcn": "org.bukkit.event.player.PlayerExpChangeEvent"
     },
@@ -747,10 +711,6 @@
     {
       "name": "PlayerLoginEvent",
       "fqcn": "org.bukkit.event.player.PlayerLoginEvent"
-    },
-    {
-      "name": "PlayerMoveEvent",
-      "fqcn": "org.bukkit.event.player.PlayerMoveEvent"
     },
     {
       "name": "PlayerPickupArrowEvent",
@@ -865,10 +825,6 @@
       "fqcn": "org.bukkit.event.server.PluginEnableEvent"
     },
     {
-      "name": "PluginEvent",
-      "fqcn": "org.bukkit.event.server.PluginEvent"
-    },
-    {
       "name": "PotionSplashEvent",
       "fqcn": "org.bukkit.event.entity.PotionSplashEvent"
     },
@@ -937,20 +893,12 @@
       "fqcn": "org.bukkit.event.server.ServerCommandEvent"
     },
     {
-      "name": "ServerEvent",
-      "fqcn": "org.bukkit.event.server.ServerEvent"
-    },
-    {
       "name": "ServerListPingEvent",
       "fqcn": "org.bukkit.event.server.ServerListPingEvent"
     },
     {
       "name": "ServerLoadEvent",
       "fqcn": "org.bukkit.event.server.ServerLoadEvent"
-    },
-    {
-      "name": "ServiceEvent",
-      "fqcn": "org.bukkit.event.server.ServiceEvent"
     },
     {
       "name": "ServiceRegisterEvent",
@@ -1033,10 +981,6 @@
       "fqcn": "org.bukkit.event.vehicle.VehicleBlockCollisionEvent"
     },
     {
-      "name": "VehicleCollisionEvent",
-      "fqcn": "org.bukkit.event.vehicle.VehicleCollisionEvent"
-    },
-    {
       "name": "VehicleCreateEvent",
       "fqcn": "org.bukkit.event.vehicle.VehicleCreateEvent"
     },
@@ -1055,10 +999,6 @@
     {
       "name": "VehicleEntityCollisionEvent",
       "fqcn": "org.bukkit.event.vehicle.VehicleEntityCollisionEvent"
-    },
-    {
-      "name": "VehicleEvent",
-      "fqcn": "org.bukkit.event.vehicle.VehicleEvent"
     },
     {
       "name": "VehicleExitEvent",
@@ -1091,10 +1031,6 @@
     {
       "name": "WeatherEvent",
       "fqcn": "org.bukkit.event.weather.WeatherEvent"
-    },
-    {
-      "name": "WorldEvent",
-      "fqcn": "org.bukkit.event.world.WorldEvent"
     },
     {
       "name": "WorldInitEvent",
@@ -1199,10 +1135,6 @@
       "fqcn": "io.papermc.paper.event.player.ChatEvent"
     },
     {
-      "name": "ClientTickEndEvent",
-      "fqcn": "io.papermc.paper.event.packet.ClientTickEndEvent"
-    },
-    {
       "name": "CommandRegisteredEvent",
       "fqcn": "com.destroystokyo.paper.event.brigadier.CommandRegisteredEvent"
     },
@@ -1297,10 +1229,6 @@
     {
       "name": "EntityLoadCrossbowEvent",
       "fqcn": "io.papermc.paper.event.entity.EntityLoadCrossbowEvent"
-    },
-    {
-      "name": "EntityMoveEvent",
-      "fqcn": "io.papermc.paper.event.entity.EntityMoveEvent"
     },
     {
       "name": "EntityPathfindEvent",
